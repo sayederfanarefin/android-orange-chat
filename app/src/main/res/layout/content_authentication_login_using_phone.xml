@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true">
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_login"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:layout_marginBottom="@dimen/dimen_login"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Log In"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite" />
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="256dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/login_wallpaper"
+                    android:padding="8dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                >
+
+                <!--<EditText-->
+                    <!--android:id="@+id/area_code"-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Area Code"-->
+                    <!--android:inputType="text"-->
+                    <!--android:layout_margin="@dimen/dimen_login"-->
+                    <!--style="@style/FullWidthEditText"-->
+                    <!--/>-->
+
+                <!--<Spinner-->
+                    <!--android:id="@+id/area_code"-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="@dimen/dimen_login"-->
+                    <!--android:entries="@array/country_arrays"-->
+                    <!--android:prompt="@string/country_prompt"-->
+                    <!--android:padding="16dp"-->
+
+                    <!--android:layout_marginBottom="@dimen/dimen_login"-->
+                    <!--android:layout_marginRight="@dimen/dimen_login"-->
+                    <!--android:layout_marginLeft="@dimen/dimen_login"-->
+
+                    <!--android:textSize = "@dimen/abc_text_size_subhead_material"-->
+
+                    <!--android:spinnerMode="dropdown"-->
+                    <!--android:background="@drawable/edittexrroundedcorner_gray"/>-->
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_login"
+                    android:padding="8dp"
+                    app:ccp_countryPreference="US,BD,NZ"
+                    app:ccp_defaultPhoneCode="1"
+                    android:layout_marginBottom="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+                    app:ccp_showFullName="true"
+                    android:background="@drawable/edittexrroundedcorner_gray"
+                    android:textSize = "@dimen/abc_text_size_subhead_material"
+                    />
+
+
+                <EditText
+                    android:id="@+id/create_profile_phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone number"
+                    android:inputType="phone"
+                    android:layout_marginBottom="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+                    style="@style/FullWidthEditText"
+
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/forgot_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="We will send 6 digit code to your phone"
+                    android:layout_margin="@dimen/dimen_login"
+                    />
+
+                <Button
+                    android:id="@+id/button_login_user_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:layout_marginTop="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+                    android:background="@drawable/login_button"
+                    android:textColor="@color/background"
+                    />
+
+                <Button
+                    android:id="@+id/button_login_using_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login using Email"
+                    android:layout_marginTop="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/button_primary_color_border_no_background"/>
+
+                <TextView
+                    android:id="@+id/create_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="New member? Create one"
+
+                    android:layout_margin="@dimen/dimen_login"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

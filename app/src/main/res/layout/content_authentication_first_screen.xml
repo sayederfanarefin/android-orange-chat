@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_view"
+    android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:layout_marginBottom="@dimen/dimen_login"
+                android:id="@+id/yoo"
+                android:layout_weight="6"
+                >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/splash"
+                    android:scaleType="centerCrop"
+
+                    />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true">
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Welcome!"-->
+                        <!--android:textAlignment="center"-->
+                        <!--android:textSize="18sp" />-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Please Authenticate!"
+                        android:gravity="center_horizontal"
+                        />
+                    <Button
+                        android:id="@+id/buttonSignIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Login"
+                        android:layout_marginTop="@dimen/dimen_login"
+                        android:layout_marginRight="@dimen/dimen_login"
+                        android:layout_marginBottom="@dimen/dimen_login"
+                        android:layout_marginLeft="@dimen/dimen_login"
+                        android:background="@drawable/login_button"
+                        android:textColor="@color/background"
+
+                        />
+
+                    <Button
+                        android:id="@+id/buttonSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Create Account"
+                        android:layout_marginTop="@dimen/dimen_login"
+                        android:layout_marginRight="@dimen/dimen_login"
+                        android:layout_marginLeft="@dimen/dimen_login"
+                        android:layout_marginBottom="@dimen/dimen_login"
+                        android:textColor="@color/colorPrimary"
+                        android:background="@drawable/button_primary_color_border_no_background"/>
+
+
+                    <LinearLayout
+                        android:id="@+id/social_button_holder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginRight="@dimen/dimen_login"
+                        android:layout_marginLeft="@dimen/dimen_login"
+                        android:layout_marginBottom="4dp"
+                        android:layout_gravity="center_horizontal">
+
+
+                        <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:id="@+id/googleSignIn"
+                            android:layout_marginRight="12dp"
+                        android:src="@mipmap/google"/>
+
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:id="@+id/fbSignIn"
+                            android:layout_marginRight="12dp"
+                            android:src="@mipmap/fb"/>
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:id="@+id/twitterSignIn"
+                            android:layout_marginRight="12dp"
+                            android:src="@mipmap/twitter"/>
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:id="@+id/githubSignIn"
+
+                            android:src="@mipmap/git"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+
+
+</LinearLayout>

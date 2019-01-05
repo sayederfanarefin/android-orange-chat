@@ -37,8 +37,7 @@ public class AuthenticationActivity extends CoreActivity {
 
     @AfterViews
     void afterViews() {
-        loadFragment(
-                FirstFragment_.builder().build());
+        loadFragment(AuthenticationFirstFragment_.builder().build());
     }
 
 

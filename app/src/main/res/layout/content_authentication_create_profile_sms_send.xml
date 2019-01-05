@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true">
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_login"
+            >
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/create_account_bg"
+
+                    />
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/forgot_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Please enter the 6 digit code that we have send to your phone."
+                    android:layout_margin="@dimen/dimen_login"
+                    android:layout_weight="1"
+                    />
+
+                <EditText
+                    android:id="@+id/create_profile_pin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="6 Digit Code"
+                    android:inputType="phone"
+                    android:layout_marginBottom="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+                    style="@style/FullWidthEditText"
+                    android:layout_weight="1"
+                    />
+
+
+
+
+
+                <Button
+                    android:id="@+id/button_create_user_verify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verify"
+                    android:layout_marginTop="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+                    android:background="@drawable/login_button"
+                    android:textColor="@color/background"
+                    android:layout_weight="1"
+                    />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:id="@+id/no_resend_code_pre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_login"
+                        android:layout_weight="2"
+                        android:text="Haven't received the code yet?"
+                        android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:id="@+id/no_resend_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dimen_login"
+                        android:text="Resend"
+                        android:layout_weight="1"
+
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

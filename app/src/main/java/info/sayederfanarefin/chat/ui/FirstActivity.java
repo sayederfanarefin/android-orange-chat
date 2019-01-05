@@ -2,6 +2,8 @@ package info.sayederfanarefin.chat.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -13,6 +15,8 @@ import com.google.firebase.database.ValueEventListener;
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.core.CoreActivity;
 import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity;
+import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
+import info.sayederfanarefin.chat.ui.authentication.AuthenticationFirstFragment_;
 import info.sayederfanarefin.chat.ui.firstFragment.FirstFragment_;
 //import info.sayederfanarefin.chat.ui.firstFragment.FirstFragment_;
 
@@ -28,18 +32,29 @@ public class FirstActivity extends CoreActivity {
 
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference userRef;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        mFirebaseAuth = FirebaseAuth.getInstance();
+
 
     }
 
     @AfterViews
     void afterViews() {
         loadFragment(FirstFragment_.builder().build());
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                init_using_firebase_user(firebaseAuth.getCurrentUser());
+            }
+        };
+        init_using_firebase_user(mFirebaseAuth.getCurrentUser());
+
     }
 
     private void init_using_firebase_user(FirebaseUser user){
@@ -54,9 +69,7 @@ public class FirstActivity extends CoreActivity {
                         public void onCancelled(DatabaseError databaseError) {}});
 
         } else {
-            Intent intent = new Intent(FirstActivity.this, AuthenticationActivity.class);
-            startActivity(intent);
-            finish();
+            AuthenticationActivity_.intent(this).start();
         }
     }
 }

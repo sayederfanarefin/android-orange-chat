@@ -37,6 +37,10 @@
         <activity
             android:name="info.sayederfanarefin.chat.ui.FirstActivity_"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
