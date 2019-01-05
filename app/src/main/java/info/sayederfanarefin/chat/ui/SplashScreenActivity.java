@@ -5,7 +5,7 @@ import android.os.Handler;
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.core.CoreActivity;
 
-import info.sayederfanarefin.chat.ui.FirstActivity_;
+//import info.sayederfanarefin.chat.ui.FirstActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
