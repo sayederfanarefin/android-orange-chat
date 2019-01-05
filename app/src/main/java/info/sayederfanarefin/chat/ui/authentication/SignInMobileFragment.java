@@ -1,18 +1,18 @@
-package info.sayederfanarefin.chat.ui.firstFragment;
-
-import info.sayederfanarefin.chat.core.CoreFragment;
+package info.sayederfanarefin.chat.ui.authentication;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+
+import info.sayederfanarefin.chat.core.CoreFragment;
 
 /**
  * Created by Sayed Erfan Arefin on 10/5/18.
  */
 
 @EFragment()
-public class FirstFragment extends CoreFragment {
+public class SignInMobileFragment extends CoreFragment {
 
-    public FirstFragment() {
+    public SignInMobileFragment() {
         //Mandatory default constructor
     }
 
