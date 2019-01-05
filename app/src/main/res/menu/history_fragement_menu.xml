@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<item-->
+        <!--android:id="@+id/action_timeline_play"-->
+        <!--android:icon="@mipmap/ic_play"-->
+        <!--app:showAsAction="always"-->
+        <!--android:title="" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_timeline_pause"-->
+        <!--android:icon="@mipmap/ic_pause"-->
+        <!--android:visible="false"-->
+        <!--app:showAsAction="always"-->
+        <!--android:title="" />-->
+
+    <item
+        android:id="@+id/add_timeline_music"
+        android:title="Add Timeline Music"
+        app:showAsAction="never" />
+
+</menu>

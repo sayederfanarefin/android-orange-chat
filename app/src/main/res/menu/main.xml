@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+    <!--  <item
+          android:id="@+id/action_gallery"
+          android:icon="@drawable/ic_insert_photo_black_24dp"
+          android:title="@string/action_settings"
+          app:showAsAction="always" />
+      <item
+          android:id="@+id/action_takepic"
+          android:icon="@drawable/ic_add_a_photo_black_24dp"
+          android:title="@string/action_settings"
+          app:showAsAction="always" />-->
+
+</menu>
