@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="colorPrimary">#FFB00B</color>
+    <color name="colorPrimaryDark">#FFB00B</color>
+    <color name="colorAccentPrimary">#FF7d01</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorTab">#FF7F00</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#EBE7E4</color>
+    <color name="background">#F9F9F9</color>
+    <color name="backgroundCommentText">#6affe19f</color>
+    <color name="smallTextColor">#9E9E9E</color>
+
+    <color name="textColorBlack">#000000</color>
+
+    <color name="colorLogInButton_1">#FF7d01</color>
+    <color name="colorLogInButton_2">#FFB00B</color>
+    <color name="profilePictureBorder">#ffe19f</color>
+    <color name="colorActivity">#e4ffffff</color>
+    <color name="comment_background">#e4fffdfd</color>
+
+
+    <color name="colorPrimaryShadow">#3bffb00b</color>
+    <color name="colorPrimaryShadow2">#17ffb00b</color>
+
+    <color name="messageBackGroundColor">#efeae7</color>
+    <color name="navDrawerIconColor">#899e9e9e</color>
+
+    <color name="ImageViewBackground">#000000</color>
+    <color name="StatusColor">#594e4e</color>
+    <color name="StatusTimeColor">#5e5e5a5a</color>
+    <color name="ReactLayoutStatusBarBackground">#ad000000</color>
+
+
+
+
     <color name="accent.translucent">#01579B</color>
     <color name="button.disable">#BBDEFB</color>
     <color name="button.pressed">@color/button.disable</color>

@@ -54,4 +54,86 @@
 
     <!-- units -->
     <string name="unit.kilometers">km</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <!-- Emotion subscription key -->
+    <!-- Please refer to https://www.projectoxford.ai/ to get your subscription key -->
+    <!-- If you have one subscription key, you can add it here to use the service -->
+    <!--<string name="subscription_key">5674a9da100d42ccb5d67b84c891a147</string>-->
+
+    <!-- key 1 -->
+    <string name="subscription_key">8e5db9dc2851444b97b2af29e48cb1bb</string>
+
+    <!-- Face subscription key -->
+    <!-- Please refer to http://oxford-portal.azurewebsites.net/doc/general/subscription-key-mgmt to get your subscription key -->
+    <!-- Please note that the Emotion API and Face API have different subscription keys -->
+    <!-- You will need Face subscription key, besides the Emotion subscription keys, for the second part of the sample to work -->
+    <!--<string name="faceSubscription_key">bb34acf4c1424f2693db8f0b1b399ffa</string>-->
+    <!-- key 2-->
+    <string name="faceSubscription_key">77c58154d68b4a1d9254372f60e55104</string>
+
+    <!-- Display strings -->
+    <string name="add_subscription_key_tip_title">Subscription Key is Needed</string>
+    <string name="add_subscription_key_tip">Please put your two subscription keys for Emotion API/Face API to source file \"app/res/values/strings.xml\" to enable Emotion API and Face API calls.</string>
+
+    <string name="title_activity_analyze">AnalyzeActivity</string>
+    <string name="title_activity_recognize">RecognizeActivity</string>
+    <string name="title_activity_thumbnail">ThumbnailActivity</string>
+
+    <!-- Select image activity -->
+    <string name="select_an_image">Select an Image</string>
+    <string name="take_photo">Take a Photo</string>
+    <string name="select_image_in_album">From Gallery</string>
+
+
+    <!-- MEssage activity -->
+    <string name="sign_out">Sign Out</string>
+    <string name="friends_list">Friends</string>
+    <string name="find_friends">Find Friends</string>
+    <string name="profile">Profile</string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="phone_number">Phone Number</string>
+    <string name="four_digit_code">We will send a 4 digit code to your phone.</string>
+    <string name="send">Send</string>
+    <string name="have_an_account">Have an account?</string>
+    <string name="login"><u>Login</u></string>
+    <string name="signup">Sign Up</string>
+    <string name="setting">Setting</string>
+    <string name="help">Help</string>
+    <string name="search">Search</string>
+    <string name="message">Messages</string>
+    <string name="groups">Groups</string>
+    <string name="new_chat">New Chat</string>
+    <string name="recent_chat">Recent Chat</string>
+    <string name="intent_img_picker">Choose image</string>
+
+    <!-- Strings related to login -->
+    <string name="friends_self_profile">My Profile</string>
+    <string name="friends_friend_list">Friends</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_chat_box2">ChatBox2</string>
+    <string name="title_activity_chat_box_">ChatBox_</string>
+
+
+
+    <string name="invitation_sms_body">I am inviting you to join POP! You can download POP from: http://pop-website-or-playstore-link.com </string>
+
+
 </resources>
