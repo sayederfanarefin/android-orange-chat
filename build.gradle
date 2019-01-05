@@ -1,0 +1,79 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        maven { url "https://maven.google.com" }
+        jcenter()
+
+        // CONFIG
+        maven { url 'https://maven.fabric.io/public' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.google.gms:google-services:4.0.2'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        // CONFIG
+        // https://bitbucket.org/hvisser/android-apt
+        // classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+
+        // CONFIG
+        // https://twittersdk.artifactoryonline.com/twittersdk/public/io/fabric/tools/gradle/
+        classpath 'io.fabric.tools:gradle:1.22.1'
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://maven.google.com" }
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url 'https://github.com/leonardocardoso/mvn-repo/raw/master/maven-deploy' }
+    }
+}
+
+// CONFIG
+project.ext {
+    compileSdkVersion = 27
+    buildToolsVersion = "27.1.1"
+    minSdkVersion = 19
+    targetSdkVersion = 26
+
+    supportVersion = "27.1.1"
+    multiDexVersion = "1.0.3"
+    annotationsVersion = "4.3.1"
+    iconifyVersion = "2.2.2"
+    glideVersion = "3.6.1"
+    gsmVersion = "15.0.1"
+    eventbusVersion = "3.0.0"
+    stethoVersion = "1.3.0"
+    fastAndroidNetworking = "1.0.0"
+    BaseRecyclerViewAdapterHelperVersion = "2.3.3"
+    tedPermissionVersion = "1.0.2"
+
+    junitVersion = "4.12"
+
+    // get the current build SHA
+    // gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+
+    // get the current build time
+    buildTime = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone("UTC"))
+
+    // Manifest version information!
+    versionMajor = 1
+    versionMinor = 0
+    versionPatch = 0
+    versionBuild = 1 // bump for internal builds, public betas, etc.
+    versionTag = "beta"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

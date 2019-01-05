@@ -1,0 +1,227 @@
+apply plugin: 'com.android.application'
+// apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    // Config
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    // Config
+    dexOptions {
+        preDexLibraries = true
+        javaMaxHeapSize "4g"
+        jumboMode true
+    }
+
+    defaultConfig {
+        // Config
+        applicationId "com.ankon.template"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode "${versionMajor}".toInteger() * 1000 + "${versionMinor}".toInteger() * 100 + "${versionPatch}".toInteger() * 10 + "${versionBuild}".toInteger();
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}-${versionTag}"
+
+        // Config
+        multiDexEnabled = true
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86", "armeabi", "mips"
+        }
+
+        javaCompileOptions {
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = ['library': 'true']
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    // Config
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/LICENSE'
+    }
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+        textReport true
+
+    }
+    buildToolsVersion '27.0.3'
+}
+
+repositories {
+    jcenter()
+    // maven { url 'https://maven.fabric.io/public' }
+
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+
+    /**
+     * =================== Support libraries ===================
+     */
+    implementation "com.android.support:support-v4:$supportVersion"
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    implementation "com.android.support:cardview-v7:$supportVersion"
+    implementation "com.android.support:multidex:$multiDexVersion"
+
+
+    // =================== Google play services ===================
+    // https://developers.google.com/android/guides/setup
+    implementation "com.google.android.gms:play-services-location:$gsmVersion"
+    implementation "com.google.android.gms:play-services-maps:$gsmVersion"
+    // https://github.com/excilys/androidannotations
+//    apt "org.androidannotations:androidannotations:$annotationsVersion"
+//    compile "org.androidannotations:androidannotations-api:$annotationsVersion"
+
+    annotationProcessor "org.androidannotations:androidannotations:$annotationsVersion"
+    implementation "org.androidannotations:androidannotations-api:$annotationsVersion"
+
+    // =================== UI ===================
+    // https://github.com/chrisjenx/Calligraphy
+    implementation 'uk.co.chrisjenx:calligraphy:2.1.0@aar'
+    // http://joanzapata.com/android-iconify/
+    implementation "com.joanzapata.iconify:android-iconify-fontawesome:$iconifyVersion"
+
+    /**
+     * =================== Networking ===================
+     */
+    // http://square.github.io/retrofit/
+    implementation "com.amitshekhar.android:android-networking:$fastAndroidNetworking"
+
+    /**
+     * =================== Data storage ===================
+     */
+    // https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-android
+    implementation group: 'com.j256.ormlite', name: 'ormlite-android', version: '5.0'
+    // https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-core
+    implementation group: 'com.j256.ormlite', name: 'ormlite-core', version: '5.0'
+
+    /**
+     * =================== Event ===================
+     */
+    implementation "org.greenrobot:eventbus:$eventbusVersion"
+
+    /**
+     * =================== Debug/ Log ===================
+     */
+    // https://github.com/orhanobut/logger
+    implementation 'com.orhanobut:logger:1.11'
+    // https://github.com/square/leakcanary
+    // compile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+    // RELEASE: uncomment this and comment out the former one
+    // compile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+    // http://facebook.github.io/stetho/
+    // compile "com.facebook.stetho:stetho:$stethoVersion"
+    //compile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    /**
+     * =================== Permissions ===================
+     */
+    // https://github.com/ParkSangGwon/TedPermission
+    implementation "gun0912.ted:tedpermission:$tedPermissionVersion"
+
+    // =================== UI ===================
+    implementation 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
+    implementation 'com.github.johnkil.android-appmsg:appmsg:1.2.0'
+
+    androidTestImplementation 'junit:junit:4.12'
+
+    implementation 'me.grantland:autofittextview:0.2.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+
+    //for country code
+    implementation 'com.hbb20:ccp:2.0.2'
+
+    //qr cde reader
+    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.2'
+
+    //qr code generator
+    implementation 'com.github.kenglxn.QRGen:android:2.3.0'
+
+    //splash screen animation
+    implementation 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
+
+    implementation 'com.google.code.gson:gson:2.7'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.7.2'
+    implementation 'jp.wasabeef:glide-transformations:2.0.1'
+
+    //bubble head tag
+    implementation 'com.github.mabbas007:TagsEditText:1.0.5'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.mindorks:paracamera:0.2.2'
+    implementation 'com.wang.avi:library:2.1.3'
+
+
+    //link preview
+    implementation 'org.jsoup:jsoup:1.8.3' // required
+    implementation 'com.leocardz:link-preview:2.0.0@aar'
+
+    //image importer and camera importer
+    //https://github.com/finn-no/capturandro
+    implementation('no.finntech:capturandro:0.0.26@aar')
+
+    //image comprasor  https://github.com/zetbaitsu/Compressor
+    implementation 'id.zelory:compressor:2.1.0'
+
+
+    //permission checker
+    implementation 'com.karumi:dexter:4.1.0'
+
+    //expandlabe views
+    implementation 'com.github.aakira:expandable-layout:1.6.0@aar'
+
+    //camera kit
+    //compile 'com.wonderkiln:camerakit:0.9.17'
+    implementation 'com.wonderkiln:camerakit:0.11.1'
+
+    //background animation for emoji
+    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
+    // sectioned header
+    implementation 'com.afollestad:sectioned-recyclerview:0.5.0'
+
+
+}
+
+//apt {
+//    arguments {
+//        androidManifestFile variant.outputs[0]?.processResources?.manifestFile
+//        // if you have multiple outputs (when using splits), you may want to have other index than 0
+//
+//        // you should set your package name here if you are using different application IDs
+//        // resourcePackageName "your.package.name"
+//
+//        // RELEASE: false
+//        trace 'true'
+//        library true
+//    }
+//}

@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Template</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- tags -->
+    <string name="tag.devices">Devices</string>
+
+    <!-- msg -->
+    <string name="msg.waitMore">This is taking unusually long time. You can wait a bit more or cancel the task and trying again later.</string>
+    <string name="msg.pleaseWait">Please wait for a moment…</string>
+    <string name="msg.noUpdates">No Updates</string>
+    <string name="msg.noDeviceSelected">No Device Selected</string>
+    <string name="msg.noPositionFetched">Failed to fetch position</string>
+
+    <!-- Google Map Api Key -->
+    <string name="google_maps_key">AIzaSyDi6cmr5Y4eI6CW3Ya8ZM_bu-t1Af67jOk</string>
+    <string name="google_snap_to_road_key">AIzaSyC2p_SFqLG8gbksAFllGul0TJV_XXfYAOw</string>
+
+    <!-- errors -->
+    <string name="error.requiredField">This field is required</string>
+    <string name="error.cannotContainSpecialCharacter">This field can not contain special character</string>
+    <string name="error.invalidEmail">This email address is not valid</string>
+    <string name="error.invalidPassword">This password has to be at least 8 characters and can contain alpha-numeric characters and/or @#$%</string>
+    <string name="error.mismatchPassword">The passwords do not match</string>
+    <string name="error.invalidPhoneNumber">This phone number is not valid</string>
+    <string name="error.incorrectCredential">Please check your user name and password and try again</string>
+    <string name="error.locationServiceUnavailable">Sorry, the service is not available</string>
+    <string name="error.locationInvalidLatLon">Invalid latitude or longitude used</string>
+    <string name="error.locationNoAddressFound">Sorry, no address found</string>
+    <string name="error.locationNoDataProvided">No location data provided</string>
+    <string name="error.connection">It appears that you are not connected with internet. Please make sure you have an active connection and try again.</string>
+    <string name="error.connectionLost">We have lost you. It appears that you are not connected with internet.</string>
+    <string name="error.genericServer">We are sorry. Our server is too busy to process your request. Please try again later.</string>
+    <string name="error.genericInternal">We are sorry. This feature is not available right now. Please try again later.</string>
+    <string name="error.externalStorageSpace">No external storage is available. Please make sure that external storage is mounted so that the app can work properly.</string>
+    <string name="error.invalidRange">Please enter value between %1$d to %2$d</string>
+    <string name="error.invalidRangeDouble">Please enter value between %1$.1f to %2$.1f</string>
+    <string name="error.futureDate">Sorry, you can not select a future date time.</string>
+    <string name="error.noData">There is no data. Pull down to refresh.</string>
+    <string name="error.deviceError">Device could not measure properly. Please consider remeasure.</string>
+    <string name="error.nameLength">Length of name must be at least 2 characters.</string>
+    <string name="error.emptyField">Field cannot be empty.</string>
+    <string name="error_passwordSize" >Password must be greater than 6</string>
+
+    <!-- labels -->
+    <string name="label.cancel">Cancel</string>
+    <string name="label.login">Login</string>
+    <string name="label.refresh">Refresh</string>
+    <string name="label.track">Live Track</string>
+
+    <!-- hints -->
+    <string name="hint.username">Username</string>
+    <string name="hint.password">Password</string>
+
+    <!-- units -->
+    <string name="unit.kilometers">km</string>
+</resources>
