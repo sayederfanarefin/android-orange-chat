@@ -1,4 +1,4 @@
-package com.ankon.template;
+package info.sayederfanarefin.chat;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.ankon.template", appContext.getPackageName());
+        assertEquals("info.sayederfanarefin.chat", appContext.getPackageName());
     }
 }

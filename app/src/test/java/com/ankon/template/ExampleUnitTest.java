@@ -1,4 +1,4 @@
-package com.ankon.template;
+package info.sayederfanarefin.chat;
 
 import org.junit.Test;
 

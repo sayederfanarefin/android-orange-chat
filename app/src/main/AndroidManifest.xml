@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ankon.template">
+    package="info.sayederfanarefin.chat">
 
     <application
-        android:name="com.ankon.template.app.App_"
+        android:name="info.sayederfanarefin.chat.app.App_"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.ankon.template.ui.SplashScreenActivity_">
+            android:name="info.sayederfanarefin.chat.ui.SplashScreenActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ankon.template.ui.FirstActivity_"
+            android:name="info.sayederfanarefin.chat.ui.FirstActivity_"
             android:screenOrientation="portrait" />
     </application>
 
