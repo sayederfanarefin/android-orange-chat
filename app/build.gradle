@@ -94,6 +94,10 @@ dependencies {
     // https://developers.google.com/android/guides/setup
     implementation "com.google.android.gms:play-services-location:$gsmVersion"
     implementation "com.google.android.gms:play-services-maps:$gsmVersion"
+    implementation "com.google.android.gms:play-services-auth:$gsmVersion"
+    implementation "com.google.android.gms:play-services-identity:$gsmVersion"
+    implementation "com.google.android.gms:play-services-gcm:$gsmVersion"
+
     // https://github.com/excilys/androidannotations
 //    apt "org.androidannotations:androidannotations:$annotationsVersion"
 //    compile "org.androidannotations:androidannotations-api:$annotationsVersion"
@@ -210,7 +214,17 @@ dependencies {
     implementation 'com.afollestad:sectioned-recyclerview:0.5.0'
 
 
+    //=====firebase
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+
+//    implementation 'com.google.firebase:firebase-database:16.0.5'
+//    implementation 'com.google.firebase:firebase-auth:16.1.0'
+//    implementation 'com.google.firebase:firebase-storage:16.0.5'
+//    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+//    implementation 'com.google.firebase:firebase-ads:17.1.2'
 }
+
+apply plugin: 'com.google.gms.google-services'
 
 //apt {
 //    arguments {
