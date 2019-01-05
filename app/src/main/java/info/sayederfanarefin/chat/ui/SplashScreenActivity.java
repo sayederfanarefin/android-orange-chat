@@ -17,6 +17,7 @@ public class SplashScreenActivity extends CoreActivity {
 
     @AfterViews
     void afterViews() {
+        getSupportActionBar().hide();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

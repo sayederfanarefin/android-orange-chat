@@ -37,6 +37,7 @@ public class AuthenticationActivity extends CoreActivity {
 
     @AfterViews
     void afterViews() {
+        getSupportActionBar().hide();
         loadFragment(AuthenticationFirstFragment_.builder().build());
     }
 
