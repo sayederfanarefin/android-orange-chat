@@ -123,15 +123,24 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin.5"
+                android:layout_gravity="center">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
                 <CheckBox
                     android:id="@+id/checkBoxAgreement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:button="@drawable/cb_selector"
+                    android:layout_margin="@dimen/margin.1"
                     android:text="CheckBox" />
 
                 <TextView
@@ -141,8 +150,9 @@
                     android:text="I agree"
                     android:textColorLink="@color/colorPrimaryDark"
                     android:clickable="true" />
+                </LinearLayout>
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <!--<TextView-->
                 <!--android:id="@+id/forgot_pass"-->

@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -52,7 +53,7 @@ public class SignUpEmailFragment extends CoreFragment {
     void afterViews() {
 
         checkBoxAgreement.setText("");
-        textViewAgreement.setText(Html.fromHtml("I have read and agree to the " +
+        textViewAgreement.setText(Html.fromHtml("I agree to the " +
                 "<a href='info.sayederfanarefin.chat.ui.authentication.TCActivity://Kode'>TERMS AND CONDITIONS</a>"));
         textViewAgreement.setClickable(true);
         textViewAgreement.setMovementMethod(LinkMovementMethod.getInstance());
@@ -99,7 +100,16 @@ public class SignUpEmailFragment extends CoreFragment {
                 }
             }
         });
-
+//        checkBoxAgreement.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b){
+//                    checkBoxAgreement.setTextColor(getActivity().getColor(R.color.colorPrimary));
+//                }else{
+//                    checkBoxAgreement.setTextColor(getActivity().getColor(R.color.colorGray));
+//                }
+//            }
+//        });
 
     }
 
