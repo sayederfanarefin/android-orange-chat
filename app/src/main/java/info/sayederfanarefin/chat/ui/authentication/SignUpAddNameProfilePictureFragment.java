@@ -1,10 +1,12 @@
 package info.sayederfanarefin.chat.ui.authentication;
 
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
@@ -35,6 +37,15 @@ public class SignUpAddNameProfilePictureFragment extends CoreFragment implements
     @ViewById
     Button buttonSelectBirthdate;
 
+    @ViewById
+    LinearLayout buttonMale;
+
+    @ViewById
+    LinearLayout buttonFemale;
+
+    String birthDate = null;
+    String gender = null;
+
     public SignUpAddNameProfilePictureFragment() {
         //Mandatory default constructor
     }
@@ -52,6 +63,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFragment implements
                 }
             }
         });
+        selectMale();
 
     }
 
@@ -75,5 +87,43 @@ public class SignUpAddNameProfilePictureFragment extends CoreFragment implements
         buttonSelectBirthdate.setText(birthDate);
     }
 
-    String birthDate;
+    @Click
+    void buttonFemale(){
+        selectFemale();
+    }
+
+    @Click
+    void buttonMale(){
+        selectMale();
+    }
+
+    @Click
+    void buttonGetStarted(){
+        if(birthDate == null){
+            showSnachBar("Please select Birthdate");
+        }else{
+            if (gender == null){
+                showSnachBar("Please select Gender");
+            }else{
+                if (TextUtils.isEmpty(createProfileName.getText().toString())){
+                    showSnachBar("Please enter your name");
+                }else{
+                    // save
+                }
+            }
+        }
+    }
+
+    private void selectMale(){
+        gender = "male";
+        buttonFemale.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        buttonMale.setBackgroundColor(getResources().getColor(R.color.colorAccentPrimary));
+    }
+
+    private void selectFemale(){
+        gender = "female";
+        buttonMale.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        buttonFemale.setBackgroundColor(getResources().getColor(R.color.colorAccentPrimary));
+    }
+
 }
