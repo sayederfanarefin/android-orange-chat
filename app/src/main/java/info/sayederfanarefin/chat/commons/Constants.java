@@ -17,5 +17,6 @@ public final class Constants {
 
 
     public static final int SMS_TIME_OUT = 120;
+    public static final int SNACK_BAR_TIME_OUT = 2000;
 
 }

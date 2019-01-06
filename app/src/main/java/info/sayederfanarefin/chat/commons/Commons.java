@@ -84,15 +84,51 @@ public class Commons {
         return m.find();
     }
 
-    public static void validateEmail(String email){
+    public static boolean  validateEmail(String email){
         String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         Log.v("=====xxxxx=====",email + " : " + matcher.matches());
-
+        return matcher.matches();
     }
 
 
+    public static int passwordStrength(String password ) {
+        boolean hasLetter = false;
+        boolean hasDigit = false;
+
+        if (password.length() >= 8) {
+            for (int i = 0; i < password.length(); i++) {
+                char x = password.charAt(i);
+                if (Character.isLetter(x)) {
+
+                    hasLetter = true;
+                }
+
+                else if (Character.isDigit(x)) {
+
+                    hasDigit = true;
+                }
+
+                // no need to check further, break the loop
+                if(hasLetter && hasDigit){
+
+                    break;
+                }
+
+            }
+            if (hasLetter && hasDigit) {
+              //  System.out.println("STRONG");
+                return 2;
+            } else {
+              //  System.out.println("NOT STRONG");
+                return 1;
+            }
+        } else {
+            //System.out.println("HAVE AT LEAST 8 CHARACTERS");
+            return 0;
+        }
+    }
 
 }

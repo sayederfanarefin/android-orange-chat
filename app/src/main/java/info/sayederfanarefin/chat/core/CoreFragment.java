@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.gson.Gson;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.commons.Constants;
 import info.sayederfanarefin.chat.log.Tracer;
 import info.sayederfanarefin.model.users;
 
@@ -45,7 +46,7 @@ public abstract class CoreFragment extends Fragment {
     }
 
     public void showSnachBar(String message){
-        final Snackbar sb =  Snackbar.make(getActivity().findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000);
+        final Snackbar sb =  Snackbar.make(getActivity().findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(Constants.SNACK_BAR_TIME_OUT);
         sb.setAction("Dismiss", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

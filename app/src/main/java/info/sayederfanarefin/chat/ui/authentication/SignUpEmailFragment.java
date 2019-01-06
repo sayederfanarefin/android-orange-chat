@@ -121,44 +121,53 @@ public class SignUpEmailFragment extends CoreFragment {
 
             boolean flag = false;
 
-            Commons.validateEmail(editTextEmail.getText().toString());
+
 
             if (TextUtils.isEmpty(editTextEmail.getText().toString())) {
                 editTextEmail.setError("Enter email address!");
                 flag = false;
             }else {
-                editTextEmail.setError(null);
-                flag = true;
+
+                if(!Commons.validateEmail(editTextEmail.getText().toString())){
+                    editTextEmail.setError("Enter valid email address!");
+                    flag = false;
+                }else{
+                    editTextEmail.setError(null);
+                    flag = true;
+                }
             }
             if (TextUtils.isEmpty(editTextPassword.getText().toString())) {
                 editTextPassword.setError("Please enter password");
                 flag = false;
             }else{
-                editTextPassword.setError(null);
-                flag = true;
+                if (Commons.passwordStrength(editTextPassword.getText().toString()) == 0){
+                    editTextPassword.setError("Password length must be atleast 8");
+                    flag = false;
+                }else {
+                    if (Commons.passwordStrength(editTextPassword.getText().toString()) == 1){
+                        editTextPassword.setError("Password should contain letters and numbers");
+                        flag = false;
+                    }else {
+                        editTextPassword.setError(null);
+                        flag = true;
+
+                    }
+                }
             }
 
 
 
             if (TextUtils.isEmpty(editTextConfirmPassword.getText().toString())) {
                 editTextConfirmPassword.setError("Enter confirm password!");
-
-
-
             }else {
-                editTextConfirmPassword.setError(null);
-                flag = true;
+                if (!editTextConfirmPassword.getText().toString().equals(editTextPassword.getText().toString())) {
+                    editTextConfirmPassword.setError("Passwords do not match");
+                    flag = false;
+                }else {
+                    editTextConfirmPassword.setError(null);
+                    flag = true;
+                }
             }
-
-            if (editTextConfirmPassword.getText().toString().equals(editTextPassword.getText().toString())) {
-                editTextConfirmPassword.setError("Passwords do not match");
-                flag = false;
-            }else {
-                editTextConfirmPassword.setError(null);
-                flag = true;
-            }
-
-
 
             if ( flag ){
                 //sign up user
