@@ -20,6 +20,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.commons.Commons;
 import info.sayederfanarefin.chat.core.CoreFragment;
 import info.sayederfanarefin.chat.ui.FirstActivity_;
 
@@ -120,6 +121,8 @@ public class SignUpEmailFragment extends CoreFragment {
 
             boolean flag = false;
 
+            Commons.validateEmail(editTextEmail.getText().toString());
+
             if (TextUtils.isEmpty(editTextEmail.getText().toString())) {
                 editTextEmail.setError("Enter email address!");
                 flag = false;
@@ -135,6 +138,18 @@ public class SignUpEmailFragment extends CoreFragment {
                 flag = true;
             }
 
+
+
+            if (TextUtils.isEmpty(editTextConfirmPassword.getText().toString())) {
+                editTextConfirmPassword.setError("Enter confirm password!");
+
+
+
+            }else {
+                editTextConfirmPassword.setError(null);
+                flag = true;
+            }
+
             if (editTextConfirmPassword.getText().toString().equals(editTextPassword.getText().toString())) {
                 editTextConfirmPassword.setError("Passwords do not match");
                 flag = false;
@@ -142,15 +157,6 @@ public class SignUpEmailFragment extends CoreFragment {
                 editTextConfirmPassword.setError(null);
                 flag = true;
             }
-
-            if (TextUtils.isEmpty(editTextConfirmPassword.getText().toString())) {
-                editTextConfirmPassword.setError("Enter confirm password!");
-                flag = false;
-            }else {
-                editTextConfirmPassword.setError(null);
-                flag = true;
-            }
-
 
 
 
@@ -171,5 +177,6 @@ public class SignUpEmailFragment extends CoreFragment {
     void textViewSignIn(){
         ((AuthenticationActivity_)getActivity()).loadChildFragment(SignInEmailFragment_.builder().build());
     }
+
 
 }

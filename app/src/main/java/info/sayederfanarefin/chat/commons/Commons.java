@@ -2,6 +2,7 @@ package info.sayederfanarefin.chat.commons;
 
 import android.Manifest;
 import android.content.Context;
+import android.util.Log;
 
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
@@ -82,5 +83,16 @@ public class Commons {
         Matcher m = p.matcher(string);
         return m.find();
     }
+
+    public static void validateEmail(String email){
+        String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        Log.v("=====xxxxx=====",email + " : " + matcher.matches());
+
+    }
+
+
 
 }
