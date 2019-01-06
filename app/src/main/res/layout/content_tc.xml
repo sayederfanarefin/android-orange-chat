@@ -9,6 +9,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Terms and conditions"
+            android:textColorLink="@color/colorPrimaryDark"
             android:layout_margin="@dimen/margin.4"/>
 
     </LinearLayout>

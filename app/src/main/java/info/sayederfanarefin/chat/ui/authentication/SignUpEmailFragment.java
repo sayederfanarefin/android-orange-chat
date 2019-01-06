@@ -1,11 +1,17 @@
 package info.sayederfanarefin.chat.ui.authentication;
 
+import android.support.annotation.NonNull;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -14,6 +20,7 @@ import org.androidannotations.annotations.ViewById;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.core.CoreFragment;
+import info.sayederfanarefin.chat.ui.FirstActivity_;
 
 /**
  * Created by Sayed Erfan Arefin on 10/5/18.
@@ -101,8 +108,58 @@ public class SignUpEmailFragment extends CoreFragment {
     void buttonSignup(){
         if(checkBoxAgreement.isChecked()){
 
+            boolean flag = false;
+
+            if (TextUtils.isEmpty(editTextEmail.getText().toString())) {
+                editTextEmail.setError("Enter email address!");
+                flag = false;
+            }else {
+                editTextEmail.setError(null);
+                flag = true;
+            }
+            if (TextUtils.isEmpty(editTextPassword.getText().toString())) {
+                editTextPassword.setError("Please enter password");
+                flag = false;
+            }else{
+                editTextPassword.setError(null);
+                flag = true;
+            }
+
+            if (editTextConfirmPassword.getText().toString().equals(editTextPassword.getText().toString())) {
+                editTextConfirmPassword.setError("Passwords do not match");
+                flag = false;
+            }else {
+                editTextConfirmPassword.setError(null);
+                flag = true;
+            }
+
+            if (TextUtils.isEmpty(editTextConfirmPassword.getText().toString())) {
+                editTextConfirmPassword.setError("Enter confirm password!");
+                flag = false;
+            }else {
+                editTextConfirmPassword.setError(null);
+                flag = true;
+            }
+
+
+
+
+            if ( flag ){
+                //sign up user
+
+            }else{
+                showSnachBar("Sign up failed");
+            }
+        }else{
+            showSnachBar("You have to agree to Terms and Conditions");
         }
         //((AuthenticationActivity_)getActivity()).loadFragment(SignInEmailFragment_.builder().build());
+    }
+
+
+    @Click
+    void textViewSignIn(){
+        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignInEmailFragment_.builder().build());
     }
 
 }
