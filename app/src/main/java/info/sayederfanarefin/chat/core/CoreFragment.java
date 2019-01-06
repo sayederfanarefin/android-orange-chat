@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 
 import info.sayederfanarefin.chat.R;
@@ -71,6 +72,22 @@ public abstract class CoreFragment extends Fragment {
         SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
         String json = mPrefs.getString(getString(R.string.sharedPrefCurrentUser), "");
         return gson.fromJson(json, users.class);
+    }
+
+    public void saveFirebaseUserInSharedPref(FirebaseUser currentUser){
+        SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(currentUser);
+        prefsEditor.putString(getString(R.string.sharedPrefCurrentFirebaseUser), json);
+        prefsEditor.commit();
+    }
+
+    public FirebaseUser getFirebaseUserFromSharedPref(){
+        Gson gson = new Gson();
+        SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+        String json = mPrefs.getString(getString(R.string.sharedPrefCurrentFirebaseUser), "");
+        return gson.fromJson(json, FirebaseUser.class);
     }
 
     public void saveStringInSharedPref(String tag, String text){

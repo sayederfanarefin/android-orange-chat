@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -46,6 +48,8 @@ public class SignUpEmailFragment extends CoreFragment {
     @ViewById
     TextView textViewAgreement;
 
+    private FirebaseAuth auth;
+
     public SignUpEmailFragment() {
         //Mandatory default constructor
     }
@@ -53,25 +57,26 @@ public class SignUpEmailFragment extends CoreFragment {
     @AfterViews
     void afterViews() {
 
+        auth = FirebaseAuth.getInstance();
+
         checkBoxAgreement.setText("");
         textViewAgreement.setText(Html.fromHtml("I agree to the " +
                 "<a href='info.sayederfanarefin.chat.ui.authentication.TCActivity://Kode'>TERMS AND CONDITIONS</a>"));
         textViewAgreement.setClickable(true);
         textViewAgreement.setMovementMethod(LinkMovementMethod.getInstance());
 
-        editTextEmail.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
-        editTextPassword.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
-        editTextConfirmPassword.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
+        editTextEmail.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
+        editTextPassword.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
+        editTextConfirmPassword.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
 
         editTextEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b){
+                if (b) {
 
-                    view.setBackgroundResource( R.drawable.edittexrroundedcorner_focused);
-                }
-                else{
-                    view.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
+                    view.setBackgroundResource(R.drawable.edittexrroundedcorner_focused);
+                } else {
+                    view.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
                 }
             }
         });
@@ -79,12 +84,11 @@ public class SignUpEmailFragment extends CoreFragment {
         editTextPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b){
+                if (b) {
 
-                    view.setBackgroundResource( R.drawable.edittexrroundedcorner_focused);
-                }
-                else{
-                    view.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
+                    view.setBackgroundResource(R.drawable.edittexrroundedcorner_focused);
+                } else {
+                    view.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
                 }
             }
         });
@@ -92,12 +96,11 @@ public class SignUpEmailFragment extends CoreFragment {
         editTextConfirmPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if(b){
+                if (b) {
 
-                    view.setBackgroundResource( R.drawable.edittexrroundedcorner_focused);
-                }
-                else{
-                    view.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
+                    view.setBackgroundResource(R.drawable.edittexrroundedcorner_focused);
+                } else {
+                    view.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
                 }
             }
         });
@@ -116,22 +119,21 @@ public class SignUpEmailFragment extends CoreFragment {
 
 
     @Click
-    void buttonSignup(){
-        if(checkBoxAgreement.isChecked()){
+    void buttonSignup() {
+        if (checkBoxAgreement.isChecked()) {
 
             boolean flag = false;
-
 
 
             if (TextUtils.isEmpty(editTextEmail.getText().toString())) {
                 editTextEmail.setError("Enter email address!");
                 flag = false;
-            }else {
+            } else {
 
-                if(!Commons.validateEmail(editTextEmail.getText().toString())){
+                if (!Commons.validateEmail(editTextEmail.getText().toString())) {
                     editTextEmail.setError("Enter valid email address!");
                     flag = false;
-                }else{
+                } else {
                     editTextEmail.setError(null);
                     flag = true;
                 }
@@ -139,15 +141,15 @@ public class SignUpEmailFragment extends CoreFragment {
             if (TextUtils.isEmpty(editTextPassword.getText().toString())) {
                 editTextPassword.setError("Please enter password");
                 flag = false;
-            }else{
-                if (Commons.passwordStrength(editTextPassword.getText().toString()) == 0){
+            } else {
+                if (Commons.passwordStrength(editTextPassword.getText().toString()) == 0) {
                     editTextPassword.setError("Password length must be atleast 8");
                     flag = false;
-                }else {
-                    if (Commons.passwordStrength(editTextPassword.getText().toString()) == 1){
+                } else {
+                    if (Commons.passwordStrength(editTextPassword.getText().toString()) == 1) {
                         editTextPassword.setError("Password should contain letters and numbers");
                         flag = false;
-                    }else {
+                    } else {
                         editTextPassword.setError(null);
                         flag = true;
 
@@ -156,26 +158,25 @@ public class SignUpEmailFragment extends CoreFragment {
             }
 
 
-
             if (TextUtils.isEmpty(editTextConfirmPassword.getText().toString())) {
                 editTextConfirmPassword.setError("Enter confirm password!");
-            }else {
+            } else {
                 if (!editTextConfirmPassword.getText().toString().equals(editTextPassword.getText().toString())) {
                     editTextConfirmPassword.setError("Passwords do not match");
                     flag = false;
-                }else {
+                } else {
                     editTextConfirmPassword.setError(null);
                     flag = true;
                 }
             }
 
-            if ( flag ){
+            if (flag) {
                 //sign up user
-
-            }else{
+                firebaseSignUp(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+            } else {
                 showSnachBar("Sign up failed");
             }
-        }else{
+        } else {
             showSnachBar("You have to agree to Terms and Conditions");
         }
         //((AuthenticationActivity_)getActivity()).loadFragment(SignInEmailFragment_.builder().build());
@@ -183,9 +184,29 @@ public class SignUpEmailFragment extends CoreFragment {
 
 
     @Click
-    void textViewSignIn(){
-        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignInEmailFragment_.builder().build());
+    void textViewSignIn() {
+        ((AuthenticationActivity_) getActivity()).loadChildFragment(SignInEmailFragment_.builder().build());
     }
 
+    private void firebaseSignUp(String email, String password) {
+
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            showSnachBar("Email sent! Please verify your email address.");
+                            saveFirebaseUserInSharedPref(auth.getCurrentUser());
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            showSnachBar("Sign up failed, please try again later.");
+                        }
+
+                        // ...
+                    }
+                });
+    }
 
 }

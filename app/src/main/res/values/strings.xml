@@ -134,6 +134,7 @@
 
     <!-- shared pref -->
     <string name="sharedPrefCurrentUser">currentUser</string>
+    <string name="sharedPrefCurrentFirebaseUser">currentFirebaseUser</string>
 
 
 
