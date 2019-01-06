@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin.2"
                     android:layout_marginBottom="@dimen/margin.2"
-                    android:textColorHint="@color/white">
+                    android:textColorHint="@color/colorPrimaryDark2">
 
                     <EditText
                         android:id="@+id/editTextSmsPin"

@@ -45,6 +45,8 @@ public class SignInEmailFragment extends CoreFragment {
     void afterViews() {
 
 
+        editTextEmail.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
+        editTextPassword.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
 
         editTextEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

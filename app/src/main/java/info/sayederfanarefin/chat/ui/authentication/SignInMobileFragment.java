@@ -65,7 +65,7 @@ public class SignInMobileFragment extends CoreFragment {
     void buttonLoginUserSend(){
 
 
-        if(  TextUtils.isEmpty(editTextPhoneNumber.getText().toString()) ){
+        if(  !TextUtils.isEmpty(editTextPhoneNumber.getText().toString()) ){
 
             saveStringInSharedPref("phone_number", countryCodePicker.getFullNumberWithPlus());
             editTextPhoneNumber.setError(null);

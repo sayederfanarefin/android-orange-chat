@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_view"
+    >
+
+   
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_login"
+            >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/dimen_login"
+            android:layout_weight="6"
+            >
+
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/login_wallpaper"
+                android:padding="8dp"
+                />
+            </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_weight="1"
+            >
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimaryDark">
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:layout_margin="@dimen/dimen_login"
+                style="@style/FullWidthEditText"
+                android:paddingTop="@dimen/margin.4"
+                android:shadowColor="@color/colorPrimaryDark2"
+                android:textColorHighlight="@color/colorPrimaryDark2"
+                android:textColorHint="@color/colorPrimaryDark2"
+                android:textColorLink="@color/colorPrimaryDark2"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorPrimaryDark2"
+                />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimaryDark">
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_marginBottom="@dimen/dimen_login"
+                android:layout_marginRight="@dimen/dimen_login"
+                android:layout_marginLeft="@dimen/dimen_login"
+
+                android:shadowColor="@color/colorPrimaryDark2"
+                android:textColorHighlight="@color/colorPrimaryDark2"
+                android:textColorHint="@color/colorPrimaryDark2"
+                android:textColorLink="@color/colorPrimaryDark2"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorPrimaryDark2"
+
+                style="@style/FullWidthEditText"
+                />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <EditText
+                    android:id="@+id/editTextConfirmPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:layout_marginBottom="@dimen/dimen_login"
+                    android:layout_marginRight="@dimen/dimen_login"
+                    android:layout_marginLeft="@dimen/dimen_login"
+
+                    android:shadowColor="@color/colorPrimaryDark2"
+                    android:textColorHighlight="@color/colorPrimaryDark2"
+                    android:textColorHint="@color/colorPrimaryDark2"
+                    android:textColorLink="@color/colorPrimaryDark2"
+                    android:textCursorDrawable="@null"
+                    android:textColor="@color/colorPrimaryDark2"
+
+                    style="@style/FullWidthEditText"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxAgreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox" />
+
+                <TextView
+                    android:id="@+id/textViewAgreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I agree"
+                    android:textColorLink="@color/colorPrimaryDark"
+                    android:clickable="true" />
+
+            </LinearLayout>
+
+            <!--<TextView-->
+                <!--android:id="@+id/forgot_pass"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="right"-->
+                <!--android:text="Forgot your password?"-->
+                <!--android:layout_marginRight="@dimen/dimen_login"/>-->
+
+            <Button
+                android:id="@+id/buttonSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:layout_marginTop="@dimen/dimen_login"
+                android:layout_marginRight="@dimen/dimen_login"
+                android:layout_marginLeft="@dimen/dimen_login"
+                android:background="@drawable/login_button"
+                android:textColor="@color/background"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/textViewSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Already a member? Sign in"
+
+                android:layout_marginTop="@dimen/dimen_login"
+                android:layout_marginBottom="@dimen/margin.6"/>
+        </LinearLayout>
+
+
+            </LinearLayout>
+
+    </RelativeLayout>

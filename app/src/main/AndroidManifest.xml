@@ -41,6 +41,16 @@
         <activity
             android:name="info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_"
             android:screenOrientation="portrait" />
+
+
+        <activity android:name="info.sayederfanarefin.chat.ui.authentication.TCActivity_">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="info.sayederfanarefin.chat.ui.authentication.TCActivity" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

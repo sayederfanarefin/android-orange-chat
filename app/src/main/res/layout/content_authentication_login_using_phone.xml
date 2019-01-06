@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_login"
                     android:padding="8dp"
-                    app:ccp_countryPreference="US,BD,NZ"
+                    app:ccp_countryPreference="US,BD,DE"
                     app:ccp_defaultPhoneCode="1"
                     android:layout_marginBottom="@dimen/dimen_login"
                     android:layout_marginRight="@dimen/dimen_login"
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:textColorHint="@color/white">
+                    android:textColorHint="@color/colorPrimaryDark2">
                 <EditText
                     android:id="@+id/editTextPhoneNumber"
                     android:layout_width="fill_parent"
