@@ -12,6 +12,7 @@ import org.androidannotations.annotations.EFragment;
 @EFragment()
 public class FirstFragment extends CoreFragment {
 
+
     public FirstFragment() {
         //Mandatory default constructor
     }

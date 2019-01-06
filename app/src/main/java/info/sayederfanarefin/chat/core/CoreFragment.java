@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import info.sayederfanarefin.chat.R;
@@ -23,8 +25,13 @@ import static android.content.Context.MODE_PRIVATE;
 @EFragment
 public abstract class CoreFragment extends Fragment {
 
+    DatabaseReference rootRef;
+    DatabaseReference usersRef;
+
     public CoreFragment() {
         // Required empty public constructor
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override

@@ -4,6 +4,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.core.CoreFirebaseFragment;
 import info.sayederfanarefin.chat.core.CoreFragment;
 
 /**
@@ -11,7 +12,7 @@ import info.sayederfanarefin.chat.core.CoreFragment;
  */
 
 @EFragment(R.layout.content_authentication_login_using_phone)
-public class AddMobileNumberToAccountFragment extends CoreFragment {
+public class AddMobileNumberToAccountFragment extends CoreFirebaseFragment {
 
     public AddMobileNumberToAccountFragment() {
         //Mandatory default constructor

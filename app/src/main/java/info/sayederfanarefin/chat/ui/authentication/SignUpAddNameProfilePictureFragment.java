@@ -20,6 +20,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.Calendar;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.core.CoreFirebaseFragment;
 import info.sayederfanarefin.chat.core.CoreFragment;
 
 /**
@@ -27,8 +28,9 @@ import info.sayederfanarefin.chat.core.CoreFragment;
  */
 
 @EFragment(R.layout.content_authentication_input_name)
-public class SignUpAddNameProfilePictureFragment extends CoreFragment implements CalendarDatePickerDialogFragment.OnDateSetListener {
+public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment implements CalendarDatePickerDialogFragment.OnDateSetListener {
 
+    private static final int GALLERY_INTENT = 2;
     private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
     @ViewById

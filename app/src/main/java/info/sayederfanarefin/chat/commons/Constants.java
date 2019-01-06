@@ -19,4 +19,20 @@ public final class Constants {
     public static final int SMS_TIME_OUT = 120;
     public static final int SNACK_BAR_TIME_OUT = 2000;
 
+
+    public static String dbUserLocation = "users";
+    public static String dbUserUserName = "username";
+    public static String dbUserUserPhone = "phone";
+    public static String dbUserUserEmail = "email";
+    public static String dbUserUserPhoto = "profilePicLocation";
+    public static String dbUserUserCoverPhoto = "coverPicLocation";
+    public static String dbUserUserStatus = "status";
+    public static String dbFriendsLocation = "friends";
+    public static String dbUserUid = "uid";
+    public static String dbUserCustomId = "user_custom_id";
+
+
+    public static String requests = "friend_requests";
+
+
 }
