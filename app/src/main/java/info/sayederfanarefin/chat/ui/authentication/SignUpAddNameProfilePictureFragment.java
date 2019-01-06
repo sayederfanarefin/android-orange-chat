@@ -3,6 +3,7 @@ package info.sayederfanarefin.chat.ui.authentication;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -24,10 +25,15 @@ import info.sayederfanarefin.chat.core.CoreFragment;
  */
 
 @EFragment(R.layout.content_authentication_input_name)
-public class SignUpAddNameProfilePictureFragment extends CoreFragment {
+public class SignUpAddNameProfilePictureFragment extends CoreFragment implements CalendarDatePickerDialogFragment.OnDateSetListener {
+
+    private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
 
     @ViewById
     EditText createProfileName;
+
+    @ViewById
+    Button buttonSelectBirthdate;
 
     public SignUpAddNameProfilePictureFragment() {
         //Mandatory default constructor
@@ -52,12 +58,22 @@ public class SignUpAddNameProfilePictureFragment extends CoreFragment {
     @Click
     void buttonSelectBirthdate(){
 
-        DatePickerBuilder dpb = new DatePickerBuilder()
-                .setFragmentManager(getActivity().getSupportFragmentManager())
-                .setStyleResId(R.style.BetterPickersDialogFragment)
-                .setYearOptional(true);
-        dpb.show();
+        CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment()
+                .setOnDateSetListener(SignUpAddNameProfilePictureFragment.this)
+                .setFirstDayOfWeek(Calendar.SUNDAY)
+                .setDoneText("Select")
+                .setCancelText("Cancel");
+
+        cdp.show(getActivity().getSupportFragmentManager(), FRAG_TAG_DATE_PICKER);
     }
 
 
+    @Override
+    public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
+        //mResultTextView.setText(getString(R.string.calendar_date_picker_result_values, year, monthOfYear, dayOfMonth));
+        birthDate = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear)+"/" + String.valueOf(year);
+        buttonSelectBirthdate.setText(birthDate);
+    }
+
+    String birthDate;
 }

@@ -113,6 +113,7 @@
                     android:text="Birth Date"
                     android:layout_margin="@dimen/dimen_login"
                     android:background="@drawable/edittexrroundedcorner_gray"
+                    android:gravity="left|center_vertical"
                     android:textColor="@color/colorPrimaryDark"
                     />
 
