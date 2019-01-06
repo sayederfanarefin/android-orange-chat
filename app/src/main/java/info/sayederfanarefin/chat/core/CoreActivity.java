@@ -2,13 +2,16 @@ package info.sayederfanarefin.chat.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -235,4 +238,29 @@ public class CoreActivity extends AppCompatActivity {
         return gson.fromJson(json, users.class);
     }
 
+    public void saveStringInSharedPref(String tag, String text){
+        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+
+        prefsEditor.putString(tag, text);
+        prefsEditor.commit();
+    }
+
+    public String getTextFromSharedPref(String tag, String def){
+
+        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        return mPrefs.getString(tag, def);
+
+    }
+
+    public void showSnachBar(String message){
+        final Snackbar sb =  Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000);
+        sb.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sb.dismiss();
+            }
+        });
+        sb.show();
+    }
 }

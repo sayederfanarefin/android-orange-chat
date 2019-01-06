@@ -1,116 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
+        android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
-        android:layout_alignParentTop="true">
-
+        android:fitsSystemWindows="true">
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/dimen_login"
-            >
-
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/create_account_bg"
-
-                    />
-
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_weight="1"
-                >
+                android:layout_marginBottom="@dimen/dimen_login"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="224dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/create_account_bg"
+                    android:padding="8dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin.6"
+                android:layout_marginTop="@dimen/margin.6"
+                android:layout_marginRight="@dimen/margin.6"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textViewForgotPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Please enter the 6 digit code that we have send to your phone."
                     android:layout_margin="@dimen/dimen_login"
-                    android:layout_weight="1"
-                    />
+                    android:gravity="center_horizontal"
+                    android:text="Please enter the 6 digit code that we have send to your phone." />
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="@dimen/margin.2"
+                    android:layout_marginBottom="@dimen/margin.2"
                     android:textColorHint="@color/white">
 
-                <EditText
-                    android:id="@+id/editTextSmsPin"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="6 Digit Code"
-                    android:inputType="phone"
-                    android:layout_marginBottom="@dimen/dimen_login"
-                    android:layout_marginRight="@dimen/dimen_login"
-                    android:layout_marginLeft="@dimen/dimen_login"
-                    style="@style/FullWidthEditText"
-                    android:layout_weight="1"
-                    android:shadowColor="@color/colorPrimaryDark2"
-                    android:textColorHighlight="@color/colorPrimaryDark2"
-                    android:textColorHint="@color/colorPrimaryDark2"
-                    android:textColorLink="@color/colorPrimaryDark2"
-                    android:textCursorDrawable="@null"
-                    android:textColor="@color/colorPrimaryDark2"
-                    />
+                    <EditText
+                        android:id="@+id/editTextSmsPin"
+                        style="@style/FullWidthEditText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin.2"
+                        android:layout_marginRight="@dimen/margin.2"
+                        android:layout_marginBottom="@dimen/margin.2"
+
+                        android:hint="6 Digit Code"
+                        android:inputType="phone"
+                        android:shadowColor="@color/colorPrimaryDark2"
+                        android:textColor="@color/colorPrimaryDark2"
+                        android:textColorHighlight="@color/colorPrimaryDark2"
+                        android:textColorHint="@color/colorPrimaryDark2"
+                        android:textColorLink="@color/colorPrimaryDark2"
+                        android:textCursorDrawable="@null" />
 
                 </android.support.design.widget.TextInputLayout>
-
 
 
                 <Button
                     android:id="@+id/buttonVerifySms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Verify"
-                    android:layout_marginTop="@dimen/dimen_login"
-                    android:layout_marginRight="@dimen/dimen_login"
-                    android:layout_marginLeft="@dimen/dimen_login"
-                    android:background="@drawable/login_button"
-                    android:textColor="@color/background"
-                    android:layout_weight="1"
-                    />
+                    android:layout_marginLeft="@dimen/margin.2"
+                    android:layout_marginTop="@dimen/margin.2"
+                    android:layout_marginRight="@dimen/margin.2"
 
+                    android:background="@drawable/login_button"
+                    android:text="Verify"
+                    android:textColor="@color/background" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin.2"
+
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
-                    >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewHaventReceivedCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dimen_login"
-                        android:layout_weight="2"
+                        android:layout_margin="@dimen/margin.2"
                         android:text="Haven't received the code yet?"
                         android:textAlignment="textEnd" />
 
@@ -118,9 +110,8 @@
                         android:id="@+id/textViewResendCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dimen_login"
+                        android:layout_margin="@dimen/margin.2"
                         android:text="Resend"
-                        android:layout_weight="1"
 
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />

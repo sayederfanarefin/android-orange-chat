@@ -3,6 +3,7 @@ package info.sayederfanarefin.chat.ui.authentication;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -62,13 +63,14 @@ public class SignInMobileFragment extends CoreFragment {
 
     @Click
     void buttonLoginUserSend(){
-        if(  editTextPhoneNumber.getText().toString()!= "" && editTextPhoneNumber.getText().toString().length() > 2){
-//            Intent intent = new Intent(LoginPhone.this, CreateProfileSmsSend.class);
-//
-//            intent.putExtra("phone_number", countryCodePicker.getFullNumberWithPlus());
-//            intent.putExtra("login", true);
-//            startActivity(intent);
+
+
+        if(  TextUtils.isEmpty(editTextPhoneNumber.getText().toString()) ){
+
+            saveStringInSharedPref("phone_number", countryCodePicker.getFullNumberWithPlus());
             editTextPhoneNumber.setError(null);
+            ((AuthenticationActivity_)getActivity()).loadFragment(SignUpReceiveSMSFragment_.builder().build());
+
         }else{
             showSnachBar("Sign in failed");
             editTextPhoneNumber.setError("Please enter phone number");

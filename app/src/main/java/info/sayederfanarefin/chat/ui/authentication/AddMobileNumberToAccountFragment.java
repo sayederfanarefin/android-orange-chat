@@ -11,9 +11,9 @@ import info.sayederfanarefin.chat.core.CoreFragment;
  */
 
 @EFragment(R.layout.content_authentication_login_using_phone)
-public class SignUpMobileFragment extends CoreFragment {
+public class AddMobileNumberToAccountFragment extends CoreFragment {
 
-    public SignUpMobileFragment() {
+    public AddMobileNumberToAccountFragment() {
         //Mandatory default constructor
     }
 

@@ -69,6 +69,7 @@ public class FirstActivity extends CoreActivity {
 
         } else {
             AuthenticationActivity_.intent(this).start();
+            finish();
         }
     }
 
