@@ -33,11 +33,11 @@ public class AuthenticationFirstFragment extends CoreFragment {
 
     @Click
     void buttonSignIn(){
-        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignInMobileFragment_.builder().build());
+        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignInEmailFragment_.builder().build());
     }
     @Click
     void buttonSignUp(){
-        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignUpMobileFragment_.builder().build());
+        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignUpEmailFragment_.builder().build());
     }
 
     @Click

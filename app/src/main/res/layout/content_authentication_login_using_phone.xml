@@ -27,15 +27,10 @@
                 android:layout_marginBottom="@dimen/dimen_login"
                 >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Log In"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite" />
+
                 <ImageView
                     android:layout_width="fill_parent"
-                    android:layout_height="256dp"
+                    android:layout_height="224dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@mipmap/login_wallpaper"
                     android:padding="8dp"
@@ -50,36 +45,15 @@
                 android:layout_marginRight="24dp"
                 >
 
-                <!--<EditText-->
-                    <!--android:id="@+id/area_code"-->
-                    <!--android:layout_width="fill_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:hint="Area Code"-->
-                    <!--android:inputType="text"-->
-                    <!--android:layout_margin="@dimen/dimen_login"-->
-                    <!--style="@style/FullWidthEditText"-->
-                    <!--/>-->
-
-                <!--<Spinner-->
-                    <!--android:id="@+id/area_code"-->
-                    <!--android:layout_width="fill_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="@dimen/dimen_login"-->
-                    <!--android:entries="@array/country_arrays"-->
-                    <!--android:prompt="@string/country_prompt"-->
-                    <!--android:padding="16dp"-->
-
-                    <!--android:layout_marginBottom="@dimen/dimen_login"-->
-                    <!--android:layout_marginRight="@dimen/dimen_login"-->
-                    <!--android:layout_marginLeft="@dimen/dimen_login"-->
-
-                    <!--android:textSize = "@dimen/abc_text_size_subhead_material"-->
-
-                    <!--android:spinnerMode="dropdown"-->
-                    <!--android:background="@drawable/edittexrroundedcorner_gray"/>-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sign in using mobile number resisted with your account"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <com.hbb20.CountryCodePicker
-                    android:id="@+id/ccp"
+                    android:id="@+id/countryCodePicker"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_login"
@@ -96,7 +70,7 @@
 
 
                 <EditText
-                    android:id="@+id/create_profile_phone"
+                    android:id="@+id/editTextPhoneNumber"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone number"
@@ -111,7 +85,7 @@
 
 
                 <TextView
-                    android:id="@+id/forgot_pass"
+                    android:id="@+id/textViewForgotPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -120,7 +94,7 @@
                     />
 
                 <Button
-                    android:id="@+id/button_login_user_send"
+                    android:id="@+id/buttonLoginUserSend"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Login"
@@ -132,7 +106,7 @@
                     />
 
                 <Button
-                    android:id="@+id/button_login_using_email"
+                    android:id="@+id/buttonLoginUsingEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Login using Email"
@@ -143,13 +117,14 @@
                     android:background="@drawable/button_primary_color_border_no_background"/>
 
                 <TextView
-                    android:id="@+id/create_new"
+                    android:id="@+id/textViewSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="New member? Create one"
 
-                    android:layout_margin="@dimen/dimen_login"/>
+                    android:layout_marginTop="@dimen/dimen_login"
+                    android:layout_marginBottom="@dimen/margin.6"/>
             </LinearLayout>
 
 

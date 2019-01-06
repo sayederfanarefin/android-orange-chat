@@ -1,12 +1,22 @@
 package info.sayederfanarefin.chat.core;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.config.Config;
@@ -18,6 +28,8 @@ import org.androidannotations.annotations.EActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
+import info.sayederfanarefin.model.users;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 @EActivity
@@ -29,6 +41,7 @@ public class CoreActivity extends AppCompatActivity {
 
     protected String tag;
 
+
     // private DatabaseHelper databaseHelper = null;
 
     @Override
@@ -38,6 +51,8 @@ public class CoreActivity extends AppCompatActivity {
         Tracer.v(this.getClass().getSimpleName() + " started");
 
         setTag(this.getClass().getSimpleName());
+
+
     }
 
     @Override
@@ -201,5 +216,23 @@ public class CoreActivity extends AppCompatActivity {
 //        if (databaseHelper == null) databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
 //        return databaseHelper;
 //    }
+
+
+
+    public void saveUserInSharedPref(users currentUser){
+        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(currentUser);
+        prefsEditor.putString(getString(R.string.sharedPrefCurrentUser), json);
+        prefsEditor.commit();
+    }
+
+    public users getUserFromSharedPref(){
+        Gson gson = new Gson();
+        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
+        String json = mPrefs.getString(getString(R.string.sharedPrefCurrentUser), "");
+        return gson.fromJson(json, users.class);
+    }
 
 }

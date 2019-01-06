@@ -132,6 +132,10 @@
     <string name="title_activity_chat_box_">ChatBox_</string>
 
 
+    <!-- shared pref -->
+    <string name="sharedPrefCurrentUser">currentUser</string>
+
+
 
     <string name="invitation_sms_body">I am inviting you to join POP! You can download POP from: http://pop-website-or-playstore-link.com </string>
 
