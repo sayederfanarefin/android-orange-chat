@@ -13,7 +13,7 @@
         android:scrollbarThumbVertical="@drawable/scrollbar"
         >
         <TextView
-            android:id="@+id/textViewTc"
+            android:id="@+id/textViewPp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Terms and conditions"
@@ -22,4 +22,7 @@
 
     </ScrollView>
     </LinearLayout>
+
+
+
 

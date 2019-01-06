@@ -106,7 +106,19 @@
 
 
                 <Button
-                    android:id="@+id/button_create_user_getStarted"
+                    android:id="@+id/buttonSelectBirthdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Birth Date"
+                    android:layout_margin="@dimen/dimen_login"
+                    android:background="@drawable/edittexrroundedcorner_gray"
+                    android:textColor="@color/colorPrimaryDark"
+                    />
+
+
+
+                <Button
+                    android:id="@+id/buttonGetStarted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Get Started"
@@ -114,89 +126,6 @@
                     android:background="@drawable/login_button"
                     android:textColor="@color/background"
                     />
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal">
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_login"
-        android:checked="true"
-        android:theme="@style/checkColorPrimary"
-
-        android:id="@+id/sync_contact"
-        />
-
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="Sync Contacts"
-
-        />
-
-</LinearLayout>
-
-
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_margin="@dimen/dimen_login">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/dimen_login"
-                        android:layout_marginLeft="@dimen/dimen_login"
-                        android:layout_marginRight="@dimen/dimen_login"
-                        android:orientation="horizontal">
-
-
-
-                        <TextView
-                            android:id="@+id/terms_of_service"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="Terms of Service"
-
-                            android:textColor="@color/colorPrimary"
-                            />
-
-                        <TextView
-                            android:id="@+id/create_profile_login"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="&amp;"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="8dp"
-                           />
-
-                        <TextView
-                            android:id="@+id/privacy_policy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:text="Privacy Policy"
-                            android:textColor="@color/colorPrimary"
-                            />
-
-                    </LinearLayout>
-
-                </LinearLayout>
 
 
             </LinearLayout>

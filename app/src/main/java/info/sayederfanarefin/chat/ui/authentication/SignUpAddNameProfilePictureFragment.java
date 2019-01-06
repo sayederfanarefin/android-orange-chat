@@ -6,9 +6,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
+import com.codetroopers.betterpickers.datepicker.DatePickerBuilder;
+
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.Calendar;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.core.CoreFragment;
@@ -41,6 +47,16 @@ public class SignUpAddNameProfilePictureFragment extends CoreFragment {
             }
         });
 
+    }
+
+    @Click
+    void buttonSelectBirthdate(){
+
+        DatePickerBuilder dpb = new DatePickerBuilder()
+                .setFragmentManager(getActivity().getSupportFragmentManager())
+                .setStyleResId(R.style.BetterPickersDialogFragment)
+                .setYearOptional(true);
+        dpb.show();
     }
 
 

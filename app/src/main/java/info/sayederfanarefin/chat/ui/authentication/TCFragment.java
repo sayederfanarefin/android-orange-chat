@@ -18,7 +18,7 @@ import info.sayederfanarefin.chat.core.CoreFragment;
  * Created by Sayed Erfan Arefin on 10/5/18.
  */
 
-@EFragment(R.layout.content_tc)
+@EFragment(R.layout.content_terms_and_condition)
 public class TCFragment extends CoreFragment {
 
     @ViewById
