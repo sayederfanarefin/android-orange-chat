@@ -33,10 +33,11 @@
                     android:text="Create Profile"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="10pt"/>
+                    android:textSize="10pt"
+                    android:padding="@dimen/margin.2"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="256dp"
+                    android:layout_height="224dp"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
