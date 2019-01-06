@@ -4,6 +4,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:scrollbarThumbVertical="@drawable/scrollbar"
+        >
         <TextView
             android:id="@+id/textViewTc"
             android:layout_width="match_parent"
@@ -12,5 +20,6 @@
             android:textColorLink="@color/colorPrimaryDark"
             android:layout_margin="@dimen/margin.4"/>
 
+    </ScrollView>
     </LinearLayout>
 
