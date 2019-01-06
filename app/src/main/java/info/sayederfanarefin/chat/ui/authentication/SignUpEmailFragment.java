@@ -64,7 +64,7 @@ public class SignUpEmailFragment extends CoreFragment {
 
         checkBoxAgreement.setText("");
         textViewAgreement.setText(Html.fromHtml("I agree to the " +
-                "<a href='info.sayederfanarefin.chat.ui.authentication.TCActivity://Kode'>TERMS AND CONDITIONS</a>"));
+                "<a href='info.sayederfanarefin.chat.ui.authentication.DisclaimerPrivacyPloicyAndTermsConditionActivity://Kode'>TERMS AND CONDITIONS</a>"));
         textViewAgreement.setClickable(true);
         textViewAgreement.setMovementMethod(LinkMovementMethod.getInstance());
 

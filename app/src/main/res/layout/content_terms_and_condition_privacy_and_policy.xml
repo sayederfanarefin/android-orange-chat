@@ -31,8 +31,8 @@ android:background="@color/background">
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/button_top_message"
-                        android:layout_width="120dp"
+                        android:id="@+id/buttonTermsAndCondition"
+                        android:layout_width="160dp"
                         android:layout_height="36dp"
                         android:background="@color/colorAccentPrimary">
 
@@ -46,8 +46,8 @@ android:background="@color/background">
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/button_top_group"
-                        android:layout_width="120dp"
+                        android:id="@+id/buttonPrivacyAndPolicy"
+                        android:layout_width="160dp"
                         android:layout_height="36dp"
                         android:background="@color/colorPrimary">
 
@@ -76,10 +76,9 @@ android:background="@color/background">
         android:layout_height="match_parent">
 
         <FrameLayout
-            android:id="@+id/message_frame"
+            android:id="@+id/mainView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="wrap_content">
         </FrameLayout>
 
     </LinearLayout>

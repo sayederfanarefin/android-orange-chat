@@ -19,19 +19,19 @@ import info.sayederfanarefin.chat.core.CoreFragment;
  */
 
 @EFragment(R.layout.content_terms_and_condition)
-public class TCFragment extends CoreFragment {
+public class DisclaimerTermsAndConditionFragment extends CoreFragment {
 
     @ViewById
     TextView textViewTc;
 
-    public TCFragment() {
+    public DisclaimerTermsAndConditionFragment() {
         //Mandatory default constructor
     }
 
     @AfterViews
     void afterViews() {
 
-        textViewTc.setText(Html.fromHtml(getString(R.string.terms_condition) + "<br>"+getString(R.string.privacy_policy)));
+        textViewTc.setText(Html.fromHtml(getString(R.string.terms_condition)));
         textViewTc.setClickable(true);
         textViewTc.setMovementMethod(LinkMovementMethod.getInstance());
 
