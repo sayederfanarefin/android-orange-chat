@@ -50,6 +50,9 @@ public class SignUpEmailFragment extends CoreFragment {
 
     private FirebaseAuth auth;
 
+    private boolean disableButton = false;
+
+
     public SignUpEmailFragment() {
         //Mandatory default constructor
     }
@@ -172,7 +175,13 @@ public class SignUpEmailFragment extends CoreFragment {
 
             if (flag) {
                 //sign up user
-                firebaseSignUp(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+                if(disableButton){
+                    showSnachBar("Please wait. Signning up...");
+                }else{
+
+                    firebaseSignUp(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+                }
+
             } else {
                 showSnachBar("Sign up failed");
             }
@@ -189,7 +198,8 @@ public class SignUpEmailFragment extends CoreFragment {
     }
 
     private void firebaseSignUp(String email, String password) {
-
+        disableButton = true;
+        showSnachBar("Signning up, please wait...");
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
@@ -199,10 +209,15 @@ public class SignUpEmailFragment extends CoreFragment {
                             showSnachBar("Email sent! Please verify your email address.");
                             saveFirebaseUserInSharedPref(auth.getCurrentUser());
 
+
+                            ((AuthenticationActivity_) getActivity()).loadFragment(SignUpAddNameProfilePictureFragment_.builder().build());
+
                         } else {
                             // If sign in fails, display a message to the user.
                             showSnachBar("Sign up failed, please try again later.");
                         }
+
+                        disableButton = false;
 
                         // ...
                     }

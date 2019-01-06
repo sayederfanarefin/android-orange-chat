@@ -31,7 +31,7 @@ import org.androidannotations.annotations.EActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
+//import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
 import info.sayederfanarefin.model.users;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 

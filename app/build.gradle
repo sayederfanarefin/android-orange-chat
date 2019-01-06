@@ -76,6 +76,7 @@ repositories {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
 
@@ -124,6 +125,7 @@ dependencies {
     implementation group: 'com.j256.ormlite', name: 'ormlite-android', version: '5.0'
     // https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-core
     implementation group: 'com.j256.ormlite', name: 'ormlite-core', version: '5.0'
+
 
     /**
      * =================== Event ===================
