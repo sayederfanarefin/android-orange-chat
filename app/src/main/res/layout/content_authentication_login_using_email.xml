@@ -42,6 +42,12 @@
             android:layout_weight="1"
             >
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimaryDark">
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="fill_parent"
@@ -50,7 +56,21 @@
                 android:inputType="textEmailAddress"
                 android:layout_margin="@dimen/dimen_login"
                 style="@style/FullWidthEditText"
+                android:paddingTop="@dimen/margin.4"
+                android:shadowColor="@color/colorPrimaryDark2"
+                android:textColorHighlight="@color/colorPrimaryDark2"
+                android:textColorHint="@color/colorPrimaryDark2"
+                android:textColorLink="@color/colorPrimaryDark2"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorPrimaryDark2"
                 />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimaryDark">
 
             <EditText
                 android:id="@+id/editTextPassword"
@@ -61,10 +81,18 @@
                 android:layout_marginBottom="@dimen/dimen_login"
                 android:layout_marginRight="@dimen/dimen_login"
                 android:layout_marginLeft="@dimen/dimen_login"
+
+                android:shadowColor="@color/colorPrimaryDark2"
+                android:textColorHighlight="@color/colorPrimaryDark2"
+                android:textColorHint="@color/colorPrimaryDark2"
+                android:textColorLink="@color/colorPrimaryDark2"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorPrimaryDark2"
+
                 style="@style/FullWidthEditText"
                 />
 
-
+            </android.support.design.widget.TextInputLayout>
 
             <!--<TextView-->
                 <!--android:id="@+id/forgot_pass"-->

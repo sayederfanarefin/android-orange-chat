@@ -1,6 +1,9 @@
 package info.sayederfanarefin.chat.core;
 
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 import info.sayederfanarefin.chat.log.Tracer;
 
@@ -33,4 +36,14 @@ public abstract class CoreFragment extends Fragment {
         // DO NOT WRITE CODE
     }
 
+    public void showSnachBar(String message){
+        final Snackbar sb =  Snackbar.make(getActivity().findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000);
+        sb.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sb.dismiss();
+            }
+        });
+        sb.show();
+    }
 }

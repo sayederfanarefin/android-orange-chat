@@ -76,10 +76,15 @@
 
                 >
 
-
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/white">
 
                 <EditText
-                    android:id="@+id/create_profile_name"
+                    android:id="@+id/createProfileName"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="Your Name"
@@ -88,9 +93,15 @@
                     android:layout_marginRight="@dimen/dimen_login"
                     android:layout_marginLeft="@dimen/dimen_login"
                     style="@style/FullWidthEditText"
+                    android:shadowColor="@color/colorPrimaryDark2"
+                    android:textColorHighlight="@color/colorPrimaryDark2"
+                    android:textColorHint="@color/colorPrimaryDark2"
+                    android:textColorLink="@color/colorPrimaryDark2"
+                    android:textCursorDrawable="@null"
+                    android:textColor="@color/colorPrimaryDark2"
                     />
 
-
+                </android.support.design.widget.TextInputLayout>
 
 
 

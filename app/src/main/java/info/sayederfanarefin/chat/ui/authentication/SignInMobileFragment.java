@@ -1,8 +1,12 @@
 package info.sayederfanarefin.chat.ui.authentication;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hbb20.CountryCodePicker;
 
@@ -58,15 +62,25 @@ public class SignInMobileFragment extends CoreFragment {
 
     @Click
     void buttonLoginUserSend(){
-
+        if(  editTextPhoneNumber.getText().toString()!= "" && editTextPhoneNumber.getText().toString().length() > 2){
+//            Intent intent = new Intent(LoginPhone.this, CreateProfileSmsSend.class);
+//
+//            intent.putExtra("phone_number", countryCodePicker.getFullNumberWithPlus());
+//            intent.putExtra("login", true);
+//            startActivity(intent);
+            editTextPhoneNumber.setError(null);
+        }else{
+            showSnachBar("Sign in failed");
+            editTextPhoneNumber.setError("Please enter phone number");
+        }
     }
     @Click
     void buttonLoginUsingEmail(){
-        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignInEmailFragment_.builder().build());
+        ((AuthenticationActivity_)getActivity()).loadFragment(SignInEmailFragment_.builder().build());
     }
     @Click
     void textViewSignUp(){
-        ((AuthenticationActivity_)getActivity()).loadChildFragment(SignUpEmailFragment_.builder().build());
+        ((AuthenticationActivity_)getActivity()).loadFragment(SignUpEmailFragment_.builder().build());
     }
 
 }

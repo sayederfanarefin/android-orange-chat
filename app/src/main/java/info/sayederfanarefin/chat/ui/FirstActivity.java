@@ -35,14 +35,14 @@ public class FirstActivity extends CoreActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        checkUserIfAuthenticated();
+
 
     }
 
     @AfterViews
     void afterViews() {
         loadFragment(FirstFragment_.builder().build());
-
+        checkUserIfAuthenticated();
     }
 
 
