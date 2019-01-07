@@ -228,14 +228,12 @@ dependencies {
     implementation 'com.code-troopers.betterpickers:library:3.1.0'
 
     //settings library
-  //  implementation 'com.github.udioshi85:libGenericSettings:1.3.1'
-
-    //circular upload progress library
-   // implementation 'com.github.aliab:circular-music-progressbar:v1.3.0'
+    implementation 'com.github.filol:material-preference-library:1.0'
 
 
  //   implementation 'com.google.firebase:firebase-ads:17.1.2'
 
+    //circular upload progressbar
     implementation 'com.github.bmarrdev:android-DecoView-charting:v0.9.3'
     
 }

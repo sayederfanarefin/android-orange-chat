@@ -196,9 +196,8 @@ public class FirstActivity extends CoreActivity {
 
 
                 }else if(navigationItems.get(position).equalsIgnoreCase("Settings")){
-
-
-
+                    Intent i = new Intent(FirstActivity.this, Settings.class);
+                    startActivity(i);
                 }
                 else if(navigationItems.get(position).equalsIgnoreCase("Logout")){
                     logout();

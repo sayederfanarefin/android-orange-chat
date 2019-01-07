@@ -52,6 +52,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.Settings"
+            android:theme="@style/AppTheme.MaterialPreferenceActivity"/>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="info.sayederfanarefin.chat.provider"
