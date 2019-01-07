@@ -79,7 +79,7 @@ public abstract class CoreFragment extends Fragment {
 
 
 
-    private void showPermissionWriteExternalStorage() {
+    public void showPermissionWriteExternalStorage() {
         int permissionCheck = ContextCompat.checkSelfPermission(
                 getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -95,7 +95,7 @@ public abstract class CoreFragment extends Fragment {
         }
     }
 
-    private void showPermissionCamera() {
+    public void showPermissionCamera() {
         int permissionCheck = ContextCompat.checkSelfPermission(
                 getContext(), Manifest.permission.CAMERA);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {

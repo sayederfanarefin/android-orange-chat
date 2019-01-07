@@ -1,32 +1,22 @@
 package info.sayederfanarefin.chat.ui.authentication;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.method.LinkMovementMethod;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.codetroopers.betterpickers.calendardatepicker.CalendarDatePickerDialogFragment;
-import com.codetroopers.betterpickers.datepicker.DatePickerBuilder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,16 +34,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
-import java.util.Date;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.commons.Constants;
 import info.sayederfanarefin.chat.core.CoreFirebaseFragment;
-import info.sayederfanarefin.chat.core.CoreFragment;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static android.app.Activity.RESULT_OK;
-import static info.sayederfanarefin.chat.commons.Commons.dateToString;
 
 /**
  * Created by Sayed Erfan Arefin on 10/5/18.
@@ -76,6 +63,9 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     ImageView profilePictureUpload;
 
     @ViewById
+    ImageButton buttonTakeSnap;
+
+    @ViewById
     EditText createProfileName;
 
     @ViewById
@@ -94,6 +84,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         //Mandatory default constructor
     }
 
+
     @AfterViews
     void afterViews() {
         createProfileName.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
@@ -109,6 +100,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         });
         selectMale();
 
+
         createProfileName.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -122,10 +114,15 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0)
-                    liveName.setText("");
+
+                    liveName.setText(s.toString());
             }
         });
+
+
+
+
+
     }
 
     @Click
@@ -143,7 +140,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
     @Click
     void buttonTakeSnap(){
-        getView().showContextMenu();
+        buttonTakeSnap.showContextMenu();
     }
 
     @Override
@@ -193,77 +190,79 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     }
 
 
+
+
     //from previous project
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
-//        super.onActivityResult(requestCode, requestCode, data);
-//        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
-//            showSnachBar("Uploading Image...");
-//            Uri uri = data.getData();
-//
-//            StorageReference photos = storageRef.child(Constants.storagePhotoLocation+ uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
-//            UploadTask uploadTask = photos.putFile(uri);
-//            uploadTask.addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception exception) {
-//                    // Handle unsuccessful uploads
-//                    showSnachBar("Something went wrong. Please try again later.");
-//                }
-//            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            Uri downloadUrl = uri;
-//                            addImageToProfile(downloadUrl.toString());
-//                        }
-//                    });
-//                }
-//            });
-//
-//        }
-//
-//        if( requestCode == REQUEST_IMAGE && resultCode == RESULT_OK ){
-//            try {
-//                showSnachBar("Uploading Image...");
-//                Uri uri = Uri.parse(imagePath);
-//                InputStream stream = new FileInputStream(imagePath);
-//
-//                StorageReference riversRef = storageRef.child("Photos/"+ uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
-//                UploadTask  uploadTask = riversRef.putStream(stream);
-//                uploadTask.addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception exception) {
-//                        showSnachBar("Upload failed");
-//                    }
-//                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                            @Override
-//                            public void onSuccess(Uri uri) {
-//                                Uri downloadUrl = uri;
-//                                addImageToProfile(downloadUrl.toString());
-//                            }
-//                        });
-//
-//                    }
-//                });
-//
-////                tvPath.setText(imagePath);
-//                // Bitmap bmp = BitmapFactory.decodeStream(in, null, options);
-//
-//
-////                picture.setImageBitmap(bmp);
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//
-//    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, requestCode, data);
+        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
+            showSnachBar("Uploading Image...");
+            Uri uri = data.getData();
+
+            StorageReference photos = storageRef.child(Constants.storagePhotoLocation+ uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
+            UploadTask uploadTask = photos.putFile(uri);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle unsuccessful uploads
+                    showSnachBar("Something went wrong. Please try again later.");
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri downloadUrl = uri;
+                            addImageToProfile(downloadUrl.toString());
+                        }
+                    });
+                }
+            });
+
+        }
+
+        if( requestCode == REQUEST_IMAGE && resultCode == RESULT_OK ){
+            try {
+                showSnachBar("Uploading Image...");
+                Uri uri = Uri.parse(imagePath);
+                InputStream stream = new FileInputStream(imagePath);
+
+                StorageReference riversRef = storageRef.child("Photos/"+ uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
+                UploadTask  uploadTask = riversRef.putStream(stream);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        showSnachBar("Upload failed");
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Uri downloadUrl = uri;
+                                addImageToProfile(downloadUrl.toString());
+                            }
+                        });
+
+                    }
+                });
+
+//                tvPath.setText(imagePath);
+                // Bitmap bmp = BitmapFactory.decodeStream(in, null, options);
+
+
+//                picture.setImageBitmap(bmp);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
 
     public void addImageToProfile(final String imageLocation) {
         usersRef.child(Constants.dbUserUserPhoto).setValue(imageLocation).addOnCompleteListener(
@@ -287,8 +286,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 //    @Override
 //    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 //        super.onCreateContextMenu(menu, v, menuInfo);
+//        Log.v("=====xxxxxx", "on create context menu");
 //        MenuInflater inflater = getActivity().getMenuInflater();
-//
 //        inflater.inflate(R.menu.choose_photo_source_context_menu_input_name, menu);
 //    }
 //
@@ -296,7 +295,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 //    public boolean onContextItemSelected(MenuItem item) {
 //        switch (item.getItemId()) {
 //            case R.id.upload:
-//                // your first action code
+//                showPermissionWriteExternalStorage();
+//
 //                Intent intent = new Intent(Intent.ACTION_PICK);
 //                intent.setType("image/*");
 //                startActivityForResult(intent, GALLERY_INTENT);
@@ -304,6 +304,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 //
 //            case R.id.take_a_new_photo:
 //
+//                showPermissionCamera();
 //
 //                Intent intent2 = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 //
