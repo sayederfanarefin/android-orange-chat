@@ -136,6 +136,9 @@
     <string name="sharedPrefCurrentUser">currentUser</string>
     <string name="sharedPrefCurrentFirebaseUser">currentFirebaseUser</string>
 
+    <string name="animation_circle_color_2">#ff5a01</string>
+    <string name="animation_circle_color_1">#EBE7E4</string>
+
 
 
     <string name="invitation_sms_body">I am inviting you to join Orange! It is a Social App. You can download Orange from: http://pop-website-or-playstore-link.com </string>

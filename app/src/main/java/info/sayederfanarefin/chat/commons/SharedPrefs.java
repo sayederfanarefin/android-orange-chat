@@ -3,11 +3,10 @@ package info.sayederfanarefin.chat.commons;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 
 import info.sayederfanarefin.chat.R;
-import info.sayederfanarefin.model.users;
+import info.sayederfanarefin.chat.model.users;
 
 public class SharedPrefs {
     Context context;

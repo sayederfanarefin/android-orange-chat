@@ -23,7 +23,7 @@ import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.commons.Commons;
 import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreFragment;
-import info.sayederfanarefin.model.users;
+import info.sayederfanarefin.chat.model.users;
 
 /**
  * Created by Sayed Erfan Arefin on 10/5/18.

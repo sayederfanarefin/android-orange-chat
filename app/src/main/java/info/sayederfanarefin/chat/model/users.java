@@ -1,4 +1,4 @@
-package info.sayederfanarefin.model;
+package info.sayederfanarefin.chat.model;
 
 /**
  * Created by erfan on 30/06/17.

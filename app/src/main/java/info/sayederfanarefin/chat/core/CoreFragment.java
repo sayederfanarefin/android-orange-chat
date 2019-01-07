@@ -1,9 +1,7 @@
 package info.sayederfanarefin.chat.core;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
@@ -13,21 +11,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
 
-import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.commons.Constants;
 import info.sayederfanarefin.chat.log.Tracer;
-import info.sayederfanarefin.model.users;
 
 import org.androidannotations.annotations.EFragment;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import static android.content.Context.MODE_PRIVATE;
 
 @EFragment
 public abstract class CoreFragment extends Fragment {

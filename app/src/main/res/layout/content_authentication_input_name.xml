@@ -33,12 +33,14 @@
             android:layout_height="188dp"
             android:orientation="vertical">
 
+
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilePictureUpload"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="24dp"
+                android:layout_centerVertical="true"
                 android:src="@drawable/com_facebook_profile_picture_blank_portrait"
                 app:civ_border_color="@color/colorAccent"
                 app:civ_border_width="2dp"
@@ -54,6 +56,16 @@
                 android:background="@mipmap/ic_new_camera"
                 android:cropToPadding="true" />
 
+
+            <com.hookedonplay.decoviewlib.DecoView
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                custom:dv_lineWidth="2dp"
+                android:id="@+id/dynamicArcView"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+
+                android:layout_width="130dp"
+                android:layout_height="130dp" />
 
         </RelativeLayout>
 

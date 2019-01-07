@@ -1,6 +1,7 @@
 package info.sayederfanarefin.chat.ui.authentication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -28,6 +29,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hookedonplay.decoviewlib.DecoView;
+import com.hookedonplay.decoviewlib.charts.SeriesItem;
+import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -65,43 +69,33 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
     private static final String FRAG_TAG_DATE_PICKER = "fragment_date_picker_name";
     private static final int REQUEST_IMAGE = 100;
-    private File destination;
-    private String imagePath;
-    private boolean uploading =false;
-
-
     @ViewById
     TextView liveName;
-
     @ViewById
     ImageView profilePictureUpload;
-
     @ViewById
     ImageButton buttonTakeSnap;
-
     @ViewById
     EditText createProfileName;
-
     @ViewById
     Button buttonSelectBirthdate;
-
     @ViewById
     LinearLayout buttonMale;
-
     @ViewById
     LinearLayout buttonFemale;
-
-
     @ViewById
     RelativeLayout contextMenu;
-
     @ViewById
     ListView listContextMenu;
-
+    @ViewById
+    DecoView dynamicArcView;
     String birthDate = null;
     String gender = null;
-
     SharedPrefs sharedPrefs;
+    private File destination;
+    private String imagePath;
+    private boolean uploading = false;
+    private boolean animateFlag = false;
 
     public SignUpAddNameProfilePictureFragment() {
         //Mandatory default constructor
@@ -131,7 +125,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         createProfileName.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
@@ -142,7 +137,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
 
-                    liveName.setText(s.toString());
+                liveName.setText(s.toString());
             }
         });
 
@@ -151,7 +146,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     }
 
     @Click
-    void buttonSelectBirthdate(){
+    void buttonSelectBirthdate() {
 
         CalendarDatePickerDialogFragment cdp = new CalendarDatePickerDialogFragment()
                 .setOnDateSetListener(SignUpAddNameProfilePictureFragment.this)
@@ -164,17 +159,18 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
 
     @Click
-    void buttonTakeSnap(){
+    void buttonTakeSnap() {
         showContextMenu();
     }
 
     @Click
-    void closeContextMenu(){
+    void closeContextMenu() {
         contextMenu.setVisibility(View.GONE);
     }
+
     private void showContextMenu() {
         contextMenu.setVisibility(View.VISIBLE);
-        String[] values = new String[] { "Upload from Gallery", "Take a picture", "View Picture"};
+        String[] values = new String[]{"Upload from Gallery", "Take a picture", "View Picture"};
 
         final ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
@@ -190,11 +186,11 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position);
-                if(item.equals("Upload from Gallery")){
+                if (item.equals("Upload from Gallery")) {
                     upload();
-                }else if(item.equals("Take a picture")){
+                } else if (item.equals("Take a picture")) {
                     takePicture();
-                }else{
+                } else {
 
                 }
 
@@ -208,31 +204,31 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     @Override
     public void onDateSet(CalendarDatePickerDialogFragment dialog, int year, int monthOfYear, int dayOfMonth) {
         //mResultTextView.setText(getString(R.string.calendar_date_picker_result_values, year, monthOfYear, dayOfMonth));
-        birthDate = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear)+"/" + String.valueOf(year);
+        birthDate = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear) + "/" + String.valueOf(year);
         buttonSelectBirthdate.setText(birthDate);
     }
 
     @Click
-    void buttonFemale(){
+    void buttonFemale() {
         selectFemale();
     }
 
     @Click
-    void buttonMale(){
+    void buttonMale() {
         selectMale();
     }
 
     @Click
-    void buttonGetStarted(){
-        if(birthDate == null){
+    void buttonGetStarted() {
+        if (birthDate == null) {
             showSnachBar("Please select Birthdate");
-        }else{
-            if (gender == null){
+        } else {
+            if (gender == null) {
                 showSnachBar("Please select Gender");
-            }else{
-                if (TextUtils.isEmpty(createProfileName.getText().toString())){
+            } else {
+                if (TextUtils.isEmpty(createProfileName.getText().toString())) {
                     showSnachBar("Please enter your name");
-                }else{
+                } else {
                     // save
                     saveUserInfo();
                 }
@@ -240,21 +236,20 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         }
     }
 
-    private void selectMale(){
+    private void selectMale() {
         gender = "male";
         buttonFemale.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         buttonMale.setBackgroundColor(getResources().getColor(R.color.colorAccentPrimary));
     }
 
-    private void selectFemale(){
+    private void selectFemale() {
         gender = "female";
         buttonMale.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         buttonFemale.setBackgroundColor(getResources().getColor(R.color.colorAccentPrimary));
     }
 
 
-
-    private void saveUserInfo(){
+    private void saveUserInfo() {
         showSnachBar("Saving data..");
         Map<String, String> userInfo = new HashMap<String, String>();
         userInfo.put(Constants.dbUserUserName, createProfileName.getText().toString());
@@ -272,9 +267,9 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
             public void onComplete(@NonNull Task<Void> task) {
                 sharedPrefs.saveUserInSharedPref(user);
                 showSnachBar("Data saved!");
-                if(uploading){
+                if (uploading) {
                     showSnachBar("Uploading image, please wait...");
-                }else{
+                } else {
                     FirstActivity_.intent(getContext()).start();
                 }
 
@@ -288,16 +283,29 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     public void onActivityResult(int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, requestCode, data);
         if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK) {
-            showSnachBar("Uploading Image...");
-            Uri uri = data.getData();
+            uploadImage(data.getData());
+        }
 
-            StorageReference photos = storageRef.child(Constants.storagePhotoLocation+ uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
-            UploadTask uploadTask = photos.putFile(uri);
+        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK) {
+            uploadImage(Uri.parse(imagePath));
+        }
+
+    }
+
+    private void uploadImage(Uri uri) {
+        try {
+            uploading = true;
+            animateFlag = true;
+            buttonTakeSnap.setVisibility(View.GONE);
+            animate();
+            showSnachBar("Uploading Image...");
+            InputStream stream = new FileInputStream(imagePath);
+            StorageReference riversRef = storageRef.child("Photos/" + uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
+            UploadTask uploadTask = riversRef.putStream(stream);
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
-                    showSnachBar("Something went wrong. Please try again later.");
+                    showSnachBar("Upload failed");
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -309,50 +317,19 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
                             addImageToProfile(downloadUrl.toString());
                         }
                     });
+
                 }
             });
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+    }
 
-        if( requestCode == REQUEST_IMAGE && resultCode == RESULT_OK ){
-            try {
-                uploading = true;
-                showSnachBar("Uploading Image...");
-                Uri uri = Uri.parse(imagePath);
-                InputStream stream = new FileInputStream(imagePath);
-
-                StorageReference riversRef = storageRef.child("Photos/"+ uri.getLastPathSegment()); //.child(uniqueId + "/profile_pic");//mStorage.child(imageLocationId);
-                UploadTask  uploadTask = riversRef.putStream(stream);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        showSnachBar("Upload failed");
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Uri downloadUrl = uri;
-                                addImageToProfile(downloadUrl.toString());
-                            }
-                        });
-
-                    }
-                });
-
-//                tvPath.setText(imagePath);
-                // Bitmap bmp = BitmapFactory.decodeStream(in, null, options);
-
-
-//                picture.setImageBitmap(bmp);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-        }
-
+    private void uploadCompleted(){
+        uploading = false;
+        animateFlag = false;
+        buttonTakeSnap.setVisibility(View.VISIBLE);
+        dynamicArcView.setVisibility(View.GONE);
     }
 
     public void addImageToProfile(final String imageLocation) {
@@ -370,7 +347,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
                                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                                 .into(profilePictureUpload);
 
-                        uploading = false;
+                        uploadCompleted();
+
                     }
                 }
         );
@@ -378,7 +356,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     }
 
 
-    private boolean upload(){
+    private boolean upload() {
 
 
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -387,15 +365,15 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         return true;
     }
 
-    private boolean takePicture(){
+    private boolean takePicture() {
 
         Intent intent2 = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
 
         File imagePath = new File(getContext().getFilesDir(), "public");
         if (!imagePath.exists()) imagePath.mkdirs();
-        String name =   dateToString(new Date(),"yyyy-MM-dd-hh-mm-ss");
-        destination = new File(imagePath, name+"tmp.jpg");
+        String name = dateToString(new Date(), "yyyy-MM-dd-hh-mm-ss");
+        destination = new File(imagePath, name + "tmp.jpg");
 
         this.imagePath = destination.getAbsolutePath();
 
@@ -408,5 +386,49 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     }
 
 
+    private void animate() {
+        SeriesItem seriesItem = new SeriesItem.Builder(Color.parseColor(getString(R.string.animation_circle_color_1)))
+                .setRange(0, 50, 0)
+                .build();
+
+        final SeriesItem seriesItem2 = new SeriesItem.Builder(Color.parseColor(getString(R.string.animation_circle_color_2)))
+                .setRange(0, 50, 0)
+                .build();
+        int backIndex = dynamicArcView.addSeries(seriesItem);
+        final int series1Index = dynamicArcView.addSeries(seriesItem2);
+
+        if (animateFlag) {
+            dynamicArcView.addEvent(new DecoEvent.Builder(50)
+                    .setIndex(backIndex)
+                    .setListener(new DecoEvent.ExecuteEventListener() {
+                        @Override
+                        public void onEventStart(DecoEvent decoEvent) {
+                        }
+
+                        @Override
+                        public void onEventEnd(DecoEvent decoEvent) {
+
+                            if (animateFlag) {
+                                dynamicArcView.addEvent(new DecoEvent.Builder(50)
+                                        .setIndex(series1Index)
+                                        .setListener(new DecoEvent.ExecuteEventListener() {
+                                            @Override
+                                            public void onEventStart(DecoEvent decoEvent) {
+                                            }
+
+                                            @Override
+                                            public void onEventEnd(DecoEvent decoEvent) {
+                                                if (animateFlag) {
+                                                    animate();
+                                                }
+                                            }
+                                        })
+                                        .build());
+                            }
+                        }
+                    })
+                    .build());
+        }
+    }
 
 }
