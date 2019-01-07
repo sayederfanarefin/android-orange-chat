@@ -47,7 +47,7 @@ public class CoreActivity extends AppCompatActivity {
     protected String tag;
 
     protected FirebaseAuth mFirebaseAuth;
-    protected DatabaseReference userRef;
+   // protected DatabaseReference userRef;
     protected FirebaseAuth.AuthStateListener mAuthStateListener;
 
     // private DatabaseHelper databaseHelper = null;
