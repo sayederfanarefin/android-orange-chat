@@ -1,15 +1,25 @@
 package info.sayederfanarefin.model;
+
 /**
- * Created by schmaedech on 30/06/17.
+ * Created by erfan on 30/06/17.
  */
 public class users {
 
-    public String getUsername() {
-        return username;
-    }
+    private String coverPicLocation;
+    private String phone;
+    private String uid;
+    private String userCustomId;
+    private String used_only_for_freind_requests;
+    private String userName;
+    private String email;
+    private String profilePicLocation;
+    private String timeLineAudio;
+    private String birthDate;
+    private String gender;
+    private String mood;
 
-    public void setUsername(String username) {
-        this.username = username;
+    public users() {
+        used_only_for_freind_requests = "new";
     }
 
     public String getEmail() {
@@ -44,18 +54,6 @@ public class users {
         this.uid = uid;
     }
 
-
-    public String getuser_custom_id() {
-        return user_custom_id;
-    }
-
-    public void setuser_custom_id(String user_custom_id) {
-        this.user_custom_id = user_custom_id;
-    }
-
-
-
-
     public String getCoverPicLocation() {
         return coverPicLocation;
     }
@@ -63,16 +61,6 @@ public class users {
     public void setCoverPicLocation(String coverPicLocation) {
         this.coverPicLocation = coverPicLocation;
     }
-
-    private String coverPicLocation;
-    private String phone;
-    private String uid;
-    private String user_custom_id;
-    private String used_only_for_freind_requests;
-    private String username;
-    private String email;
-    private String profilePicLocation;
-    private String timeLineAudio;
 
     public String getTimeLineAudio() {
         return timeLineAudio;
@@ -90,12 +78,36 @@ public class users {
         this.mood = mood;
     }
 
-    private String mood;
+    public String getUserCustomId() {
+        return userCustomId;
+    }
 
+    public void setUserCustomId(String userCustomId) {
+        this.userCustomId = userCustomId;
+    }
 
+    public String getUserName() {
+        return userName;
+    }
 
-    public users() {
-        used_only_for_freind_requests = "new";
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
 }

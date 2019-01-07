@@ -47,7 +47,9 @@ import java.util.Map;
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.adapters.StableArrayAdapter;
 import info.sayederfanarefin.chat.commons.Constants;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreFirebaseFragment;
+import info.sayederfanarefin.chat.ui.FirstActivity_;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static android.app.Activity.RESULT_OK;
@@ -98,6 +100,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     String birthDate = null;
     String gender = null;
 
+    SharedPrefs sharedPrefs;
+
     public SignUpAddNameProfilePictureFragment() {
         //Mandatory default constructor
     }
@@ -141,6 +145,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
             }
         });
 
+        sharedPrefs = new SharedPrefs(getContext());
 
     }
 
@@ -256,11 +261,17 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         userInfo.put(Constants.birthDate, birthDate);
         userInfo.put(Constants.gender, gender);
 
+        user.setUserName(createProfileName.getText().toString());
+        user.setBirthDate(birthDate);
+        user.setGender(gender);
+
         //usersRef.child(Constants.dbUserUserName).setValue(createProfileName.getText().toString());
         usersRef.setValue(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                sharedPrefs.saveUserInSharedPref(user);
                 showSnachBar("Data saved!");
+                FirstActivity_.intent(getContext()).start();
             }
         });
     }
@@ -343,6 +354,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
+                        user.setProfilePicLocation(imageLocation);
+                        sharedPrefs.saveUserInSharedPref(user);
                         Glide.with(profilePictureUpload.getContext())
                                 .load(imageLocation)
                                 .bitmapTransform(new CropCircleTransformation(getContext()))
