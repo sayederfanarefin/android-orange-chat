@@ -7,6 +7,8 @@ import android.util.Log;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -130,5 +132,14 @@ public class Commons {
             return 0;
         }
     }
+
+
+    public static String dateToString(Date date, String format) {
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        return df.format(date);
+    }
+
+
+
 
 }

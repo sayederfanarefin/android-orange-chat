@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreActivity;
 import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
 import info.sayederfanarefin.chat.ui.firstFragment.FirstFragment_;
@@ -62,7 +63,8 @@ public class FirstActivity extends CoreActivity {
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
-                            saveUserInSharedPref(snapshot.getValue(users.class));
+                            SharedPrefs sharedPrefs = new SharedPrefs(getApplicationContext());
+                            sharedPrefs.saveUserInSharedPref(snapshot.getValue(users.class));
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {}});

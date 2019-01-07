@@ -1,22 +1,13 @@
 package info.sayederfanarefin.chat.ui.authentication;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -29,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.commons.Constants;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreFragment;
 
 /**
@@ -52,8 +44,9 @@ public class SignUpReceiveSMSFragment extends CoreFragment {
 
     @AfterViews
     void afterViews() {
+        SharedPrefs sharedPrefs = new SharedPrefs(getContext());
 
-        phoneNumber = getStringFromSharedPref("phone_number", "");
+        phoneNumber = sharedPrefs.getStringFromSharedPref("phone_number", "");
         auth = FirebaseAuth.getInstance();
         sendPin(phoneNumber);
         editTextSmsPin.setOnFocusChangeListener(new View.OnFocusChangeListener() {

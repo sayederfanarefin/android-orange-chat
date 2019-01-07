@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilePicture_66"
+                android:id="@+id/profilePictureUpload"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:layout_centerHorizontal="true"
@@ -42,22 +42,37 @@
                 />
 
             <ImageButton
-                android:id="@+id/imageButton_takesnap"
+                android:id="@+id/buttonTakeSnap"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_alignEnd="@+id/profilePicture_66"
-                android:layout_alignBottom="@+id/profilePicture_66"
+                android:layout_alignEnd="@+id/profilePictureUpload"
+                android:layout_alignBottom="@+id/profilePictureUpload"
                 android:background="@mipmap/ic_new_camera"
                 android:cropToPadding="true" />
 
 
         </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/margin.2"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/liveName"
+            android:textSize="20pt" />
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin.4"
+        android:layout_marginRight="@dimen/margin.4"
         android:layout_weight="4"
         android:orientation="vertical"
 

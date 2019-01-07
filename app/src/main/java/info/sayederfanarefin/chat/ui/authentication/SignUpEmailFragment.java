@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,7 +13,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -23,8 +21,9 @@ import org.androidannotations.annotations.ViewById;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.commons.Commons;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreFragment;
-import info.sayederfanarefin.chat.ui.FirstActivity_;
+import info.sayederfanarefin.model.users;
 
 /**
  * Created by Sayed Erfan Arefin on 10/5/18.
@@ -207,7 +206,11 @@ public class SignUpEmailFragment extends CoreFragment {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             showSnachBar("Email sent! Please verify your email address.");
-                            saveFirebaseUserInSharedPref(auth.getCurrentUser());
+                            SharedPrefs sharedPrefs = new SharedPrefs(getContext());
+                            users u = new users();
+                            u.setEmail(auth.getCurrentUser().getEmail());
+                            u.setUid(auth.getCurrentUser().getUid());
+                            sharedPrefs.saveUserInSharedPref(u);
 
 
                             ((AuthenticationActivity_) getActivity()).loadFragment(SignUpAddNameProfilePictureFragment_.builder().build());

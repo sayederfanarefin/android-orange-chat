@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -222,36 +223,7 @@ public class CoreActivity extends AppCompatActivity {
 
 
 
-    public void saveUserInSharedPref(users currentUser){
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor prefsEditor = mPrefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(currentUser);
-        prefsEditor.putString(getString(R.string.sharedPrefCurrentUser), json);
-        prefsEditor.commit();
-    }
 
-    public users getUserFromSharedPref(){
-        Gson gson = new Gson();
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
-        String json = mPrefs.getString(getString(R.string.sharedPrefCurrentUser), "");
-        return gson.fromJson(json, users.class);
-    }
-
-    public void saveStringInSharedPref(String tag, String text){
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor prefsEditor = mPrefs.edit();
-
-        prefsEditor.putString(tag, text);
-        prefsEditor.commit();
-    }
-
-    public String getTextFromSharedPref(String tag, String def){
-
-        SharedPreferences mPrefs = getPreferences(MODE_PRIVATE);
-        return mPrefs.getString(tag, def);
-
-    }
 
     public void showSnachBar(String message){
         final Snackbar sb =  Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000);
@@ -263,4 +235,5 @@ public class CoreActivity extends AppCompatActivity {
         });
         sb.show();
     }
+
 }

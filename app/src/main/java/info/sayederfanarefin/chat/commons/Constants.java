@@ -32,6 +32,7 @@ public final class Constants {
     public static String dbUserCustomId = "user_custom_id";
 
 
+    public static String storagePhotoLocation = "Photos/";
     public static String requests = "friend_requests";
 
 
