@@ -33,6 +33,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 //import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
+import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
 import info.sayederfanarefin.model.users;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -45,6 +46,9 @@ public class CoreActivity extends AppCompatActivity {
 
     protected String tag;
 
+    protected FirebaseAuth mFirebaseAuth;
+    protected DatabaseReference userRef;
+    protected FirebaseAuth.AuthStateListener mAuthStateListener;
 
     // private DatabaseHelper databaseHelper = null;
 
@@ -234,6 +238,16 @@ public class CoreActivity extends AppCompatActivity {
             }
         });
         sb.show();
+    }
+
+    public boolean checkUserIfAuthenticated(){
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        if ( mFirebaseAuth.getCurrentUser() == null) {
+            return false;
+        }else{
+            return true;
+        }
     }
 
 }
