@@ -26,7 +26,12 @@ import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.adapters.DrawerListAdapter;
 import info.sayederfanarefin.chat.core.CoreActivity;
 import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
+import info.sayederfanarefin.chat.ui.firstFragment.ChatFragment_;
 import info.sayederfanarefin.chat.ui.firstFragment.FirstFragment_;
+import info.sayederfanarefin.chat.ui.firstFragment.FriendsFragment_;
+import info.sayederfanarefin.chat.ui.firstFragment.HomeFragment;
+import info.sayederfanarefin.chat.ui.firstFragment.HomeFragment_;
+import info.sayederfanarefin.chat.ui.firstFragment.TimeLineFragment_;
 //import info.sayederfanarefin.chat.ui.firstFragment.FirstFragment_;
 
 import org.androidannotations.annotations.AfterViews;
@@ -213,7 +218,7 @@ public class FirstActivity extends CoreActivity {
         navigationItems.add("Timeline");
         navigationItems.add("Message");
         navigationItems.add("Music");
-        //navigationItems.add("Notifications");
+        navigationItems.add("Notifications");
         navigationItems.add("Profile");
         navigationItems.add("Settings");
         navigationItems.add("Logout");
@@ -241,15 +246,19 @@ public class FirstActivity extends CoreActivity {
                 switch (tab.getPosition()) {
                     case 0:
                         toolbarTitle.setText("Home");
+                        loadFragment(HomeFragment_.builder().build());
                         break;
                     case 1:
                         toolbarTitle.setText("Timeline");
+                        loadFragment(TimeLineFragment_.builder().build());
                         break;
                     case 2:
                         toolbarTitle.setText("Chat");
+                        loadFragment(ChatFragment_.builder().build());
                         break;
                     case 3:
                         toolbarTitle.setText("Friends");
+                        loadFragment(FriendsFragment_.builder().build());
                         break;
                 }
             }
