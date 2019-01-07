@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.adapters.DrawerListAdapter;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreActivity;
 import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
 import info.sayederfanarefin.chat.ui.firstFragment.ChatFragment_;
@@ -97,6 +98,7 @@ public class FirstActivity extends CoreActivity {
     };
 
     private DrawerListAdapter drawerListAdapter;
+    private SharedPrefs sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +114,7 @@ public class FirstActivity extends CoreActivity {
         loadFragment(FirstFragment_.builder().build());
         redirectToAuthenticateActivityIfNeeded();
 
+        sharedPrefs = new SharedPrefs(this);
         initializeViews();
 //        userRef.keepSynced(true);
     }
@@ -179,23 +182,26 @@ public class FirstActivity extends CoreActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(navigationItems.get(position).equalsIgnoreCase("Timeline")){
+                if(navigationItems.get(position).equalsIgnoreCase("Add Friends")){
 
-                }else if(navigationItems.get(position).equalsIgnoreCase("Message")){
+                }else if(navigationItems.get(position).equalsIgnoreCase("New Message")){
+
+
+                }else if(navigationItems.get(position).equalsIgnoreCase("Notifications")){
+
 
 
                 }else if(navigationItems.get(position).equalsIgnoreCase("Profile")){
 
 
 
-                }else if(navigationItems.get(position).equalsIgnoreCase("Music")){
+                }else if(navigationItems.get(position).equalsIgnoreCase("Settings")){
 
 
 
                 }
                 else if(navigationItems.get(position).equalsIgnoreCase("Logout")){
-
-
+                    logout();
                 }
             }
         });
@@ -215,9 +221,8 @@ public class FirstActivity extends CoreActivity {
 
 
 //adding menu items for naviations
-        navigationItems.add("Timeline");
-        navigationItems.add("Message");
-        navigationItems.add("Music");
+        navigationItems.add("Add Friends");
+        navigationItems.add("New Message");
         navigationItems.add("Notifications");
         navigationItems.add("Profile");
         navigationItems.add("Settings");
@@ -273,6 +278,13 @@ public class FirstActivity extends CoreActivity {
         toolbarTitle.setText("Home");
         getSupportActionBar().hide();
 
+    }
+
+    private void logout(){
+        AuthUI.getInstance().signOut(this);
+        sharedPrefs.saveUserInSharedPref(null);
+        AuthenticationActivity_.intent(this).start();
+        finish();
     }
 
 }
