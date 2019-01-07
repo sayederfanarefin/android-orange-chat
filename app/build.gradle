@@ -228,8 +228,6 @@ dependencies {
     implementation 'com.code-troopers.betterpickers:library:3.1.0'
 
 
-
-
  //   implementation 'com.google.firebase:firebase-ads:17.1.2'
 
     

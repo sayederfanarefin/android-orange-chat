@@ -2,16 +2,21 @@ package info.sayederfanarefin.chat.ui.authentication;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -33,14 +38,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.adapters.StableArrayAdapter;
 import info.sayederfanarefin.chat.commons.Constants;
 import info.sayederfanarefin.chat.core.CoreFirebaseFragment;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static android.app.Activity.RESULT_OK;
+import static info.sayederfanarefin.chat.commons.Commons.dateToString;
 
 /**
  * Created by Sayed Erfan Arefin on 10/5/18.
@@ -77,6 +86,13 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     @ViewById
     LinearLayout buttonFemale;
 
+
+    @ViewById
+    RelativeLayout contextMenu;
+
+    @ViewById
+    ListView listContextMenu;
+
     String birthDate = null;
     String gender = null;
 
@@ -87,6 +103,10 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
     @AfterViews
     void afterViews() {
+
+        showPermissionCamera();
+        showPermissionWriteExternalStorage();
+
         createProfileName.setBackgroundResource(R.drawable.edittexrroundedcorner_gray);
         createProfileName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -120,9 +140,6 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         });
 
 
-
-
-
     }
 
     @Click
@@ -140,7 +157,40 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
     @Click
     void buttonTakeSnap(){
-        buttonTakeSnap.showContextMenu();
+        showContextMenu();
+    }
+
+    private void showContextMenu() {
+        contextMenu.setVisibility(View.VISIBLE);
+        String[] values = new String[] { "Upload from Gallery", "Take a picture", "View Picture"};
+
+        final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+            list.add(values[i]);
+        }
+        final StableArrayAdapter adapter = new StableArrayAdapter(getContext(),
+                android.R.layout.simple_list_item_1, list);
+
+        listContextMenu.setAdapter(adapter);
+        listContextMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                if(item.equals("Upload from Gallery")){
+                    upload();
+                }else if(item.equals("Take a picture")){
+                    takePicture();
+                }else{
+
+                }
+
+                contextMenu.setVisibility(View.GONE);
+            }
+
+        });
+
     }
 
     @Override
@@ -283,52 +333,35 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     }
 
 
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        Log.v("=====xxxxxx", "on create context menu");
-//        MenuInflater inflater = getActivity().getMenuInflater();
-//        inflater.inflate(R.menu.choose_photo_source_context_menu_input_name, menu);
-//    }
-//
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.upload:
-//                showPermissionWriteExternalStorage();
-//
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent.setType("image/*");
-//                startActivityForResult(intent, GALLERY_INTENT);
-//                return true;
-//
-//            case R.id.take_a_new_photo:
-//
-//                showPermissionCamera();
-//
-//                Intent intent2 = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//
-//
-//                File imagePath = new File(getContext().getFilesDir(), "public");
-//                if (!imagePath.exists()) imagePath.mkdirs();
-//                String name =   dateToString(new Date(),"yyyy-MM-dd-hh-mm-ss");
-//                destination = new File(imagePath, name+"tmp.jpg");
-//
-//                this.imagePath = destination.getAbsolutePath();
-//
-//                Uri imageUri = FileProvider.getUriForFile(getContext(), "us.poptalks.provider", destination);
-//                intent2.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-//                startActivityForResult(intent2, REQUEST_IMAGE);
-//
-//
-//                return true;
-//
-//            case R.id.view_profile_photo:
-//
-//
-//            default:
-//                return super.onContextItemSelected(item);
-//        }
-//    }
+    private boolean upload(){
+
+
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, GALLERY_INTENT);
+        return true;
+    }
+
+    private boolean takePicture(){
+
+        Intent intent2 = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
+
+        File imagePath = new File(getContext().getFilesDir(), "public");
+        if (!imagePath.exists()) imagePath.mkdirs();
+        String name =   dateToString(new Date(),"yyyy-MM-dd-hh-mm-ss");
+        destination = new File(imagePath, name+"tmp.jpg");
+
+        this.imagePath = destination.getAbsolutePath();
+
+        Uri imageUri = FileProvider.getUriForFile(getContext(), "info.sayederfanarefin.chat.provider", destination);
+        intent2.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(intent2, REQUEST_IMAGE);
+
+
+        return true;
+    }
+
+
 
 }

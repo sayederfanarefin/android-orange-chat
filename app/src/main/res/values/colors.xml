@@ -32,7 +32,7 @@
     <color name="ImageViewBackground">#000000</color>
     <color name="StatusColor">#594e4e</color>
     <color name="StatusTimeColor">#5e5e5a5a</color>
-    <color name="ReactLayoutStatusBarBackground">#ad000000</color>
+    <color name="tintedBlack">#ad000000</color>
 
 
 
