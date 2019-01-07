@@ -160,6 +160,10 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         showContextMenu();
     }
 
+    @Click
+    void closeContextMenu(){
+        contextMenu.setVisibility(View.GONE);
+    }
     private void showContextMenu() {
         contextMenu.setVisibility(View.VISIBLE);
         String[] values = new String[] { "Upload from Gallery", "Take a picture", "View Picture"};

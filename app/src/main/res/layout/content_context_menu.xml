@@ -51,16 +51,33 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@color/colorPrimaryDark">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:background="@color/colorPrimaryDark"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
                             android:padding="@dimen/margin.3"
                             android:textStyle="bold"
                             android:text="Please Select"
                             tools:text="Please Select"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentRight="true"
+                                android:padding="@dimen/margin.2"
+                                android:src="@android:drawable/ic_notification_clear_all"
+                                android:id="@+id/closeContextMenu"
+                                />
 
+                        </RelativeLayout>
                         <ListView
                             android:id="@+id/listContextMenu"
                             android:layout_width="match_parent"
