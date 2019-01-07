@@ -257,7 +257,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
         userInfo.put(Constants.gender, gender);
 
         //usersRef.child(Constants.dbUserUserName).setValue(createProfileName.getText().toString());
-        usersRef.push().setValue(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+        usersRef.setValue(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 showSnachBar("Data saved!");

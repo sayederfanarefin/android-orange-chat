@@ -21,7 +21,7 @@ public final class Constants {
 
 
     public static String dbUserLocation = "users";
-    public static String dbUserUserName = "username";
+    public static String dbUserUserName = "userName";
     public static String dbUserUserPhone = "phone";
     public static String dbUserUserEmail = "email";
     public static String dbUserUserPhoto = "profilePicLocation";
@@ -31,7 +31,7 @@ public final class Constants {
     public static String dbUserUid = "uid";
     public static String birthDate = "birthDate";
     public static String gender = "gender";
-    public static String dbUserCustomId = "user_custom_id";
+    public static String dbUserCustomId = "userCustomId";
 
 
     public static String storagePhotoLocation = "Photos/";
