@@ -67,6 +67,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     private static final int REQUEST_IMAGE = 100;
     private File destination;
     private String imagePath;
+    private boolean uploading =false;
 
 
     @ViewById
@@ -271,7 +272,12 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
             public void onComplete(@NonNull Task<Void> task) {
                 sharedPrefs.saveUserInSharedPref(user);
                 showSnachBar("Data saved!");
-                FirstActivity_.intent(getContext()).start();
+                if(uploading){
+                    showSnachBar("Uploading image, please wait...");
+                }else{
+                    FirstActivity_.intent(getContext()).start();
+                }
+
             }
         });
     }
@@ -310,6 +316,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
         if( requestCode == REQUEST_IMAGE && resultCode == RESULT_OK ){
             try {
+                uploading = true;
                 showSnachBar("Uploading Image...");
                 Uri uri = Uri.parse(imagePath);
                 InputStream stream = new FileInputStream(imagePath);
@@ -362,6 +369,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
                                 .centerCrop()
                                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                                 .into(profilePictureUpload);
+
+                        uploading = false;
                     }
                 }
         );
