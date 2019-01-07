@@ -103,7 +103,7 @@ public class FirstActivity extends CoreActivity {
 
     @AfterViews
     void afterViews() {
-        getSupportActionBar().hide();
+
         loadFragment(FirstFragment_.builder().build());
         redirectToAuthenticateActivityIfNeeded();
 
@@ -160,8 +160,8 @@ public class FirstActivity extends CoreActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setHomeButtonEnabled(true);
 
         drawerLayout.addDrawerListener(toggle);
 
@@ -200,9 +200,9 @@ public class FirstActivity extends CoreActivity {
 
     private void initializeViews(){
 
-        setSupportActionBar(toolbar);
+      //  setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+       // getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 //custom drawer
         navigationItems = new ArrayList<>();
@@ -262,7 +262,7 @@ public class FirstActivity extends CoreActivity {
 
         //viewPager.setCurrentItem(0);
         toolbarTitle.setText("Home");
-
+        getSupportActionBar().hide();
 
     }
 

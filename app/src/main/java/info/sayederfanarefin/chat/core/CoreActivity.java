@@ -225,10 +225,6 @@ public class CoreActivity extends AppCompatActivity {
 //        return databaseHelper;
 //    }
 
-
-
-
-
     public void showSnachBar(String message){
         final Snackbar sb =  Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).setDuration(5000);
         sb.setAction("Dismiss", new View.OnClickListener() {
