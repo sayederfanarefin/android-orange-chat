@@ -29,6 +29,8 @@ public final class Constants {
     public static String dbUserUserStatus = "status";
     public static String dbFriendsLocation = "friends";
     public static String dbUserUid = "uid";
+    public static String birthDate = "birthDate";
+    public static String gender = "gender";
     public static String dbUserCustomId = "user_custom_id";
 
 

@@ -41,6 +41,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import info.sayederfanarefin.chat.R;
 import info.sayederfanarefin.chat.adapters.StableArrayAdapter;
@@ -226,6 +228,7 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
                     showSnachBar("Please enter your name");
                 }else{
                     // save
+                    saveUserInfo();
                 }
             }
         }
@@ -245,6 +248,22 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
 
 
 
+    private void saveUserInfo(){
+        showSnachBar("Saving data..");
+        Map<String, String> userInfo = new HashMap<String, String>();
+        userInfo.put(Constants.dbUserUserName, createProfileName.getText().toString());
+        userInfo.put(Constants.dbUserUserEmail, user.getEmail());
+        userInfo.put(Constants.birthDate, birthDate);
+        userInfo.put(Constants.gender, gender);
+
+        //usersRef.child(Constants.dbUserUserName).setValue(createProfileName.getText().toString());
+        usersRef.push().setValue(userInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                showSnachBar("Data saved!");
+            }
+        });
+    }
 
     //from previous project
 
