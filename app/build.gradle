@@ -235,6 +235,10 @@ dependencies {
 
     //circular upload progressbar
     implementation 'com.github.bmarrdev:android-DecoView-charting:v0.9.3'
+
+    //icon library
+    implementation "com.mikepenz:iconics-core:3.1.0"
+    implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
     
 }
 
