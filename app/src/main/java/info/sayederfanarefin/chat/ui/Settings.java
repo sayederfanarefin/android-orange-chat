@@ -32,12 +32,19 @@ import com.francoisdexemple.materialpreference.model.MaterialPreferenceCard;
 import com.francoisdexemple.materialpreference.model.MaterialPreferenceList;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
+import info.sayederfanarefin.chat.ui.authentication.AuthenticationActivity_;
+import info.sayederfanarefin.chat.ui.authentication.DisclaimerPrivacyPloicyAndTermsConditionActivity;
+import info.sayederfanarefin.chat.ui.authentication.SignUpEmailFragment_;
+
 
 public class Settings extends MaterialPreferenceActivity {
 
     @Override
     @NonNull
     protected MaterialPreferenceList getMaterialPreferenceList(@NonNull final Context c) {
+
+        final SharedPrefs sharedPrefs = new SharedPrefs(c);
 
         //getSupportActionBar().setTitle("Settings");
         changeActiobarDesign();
@@ -60,33 +67,23 @@ public class Settings extends MaterialPreferenceActivity {
                 "Version",
                 false));
 
-        appCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Privacy & Policy")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .setOnClickAction(new MaterialPreferenceItemOnClickAction() {
-                    @Override
-                    public void onClick() {
+//        appCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
+//                .text("Privacy & Policy And Terms & Conditions")
+//                .icon(new IconicsDrawable(c)
+//                        .icon(CommunityMaterial.Icon.cmd_book)
+//                        .color(ContextCompat.getColor(c, colorIcon))
+//                        .sizeDp(18))
+//                .setOnClickAction(new MaterialPreferenceItemOnClickAction() {
+//                    @Override
+//                    public void onClick() {
+//
+//                        Intent i = new Intent(Settings.this, DisclaimerPrivacyPloicyAndTermsConditionActivity.class);
+//                        startActivity(i);
+//                    }
+//                })
+//                .build());
 
-                    }
-                })
-                .build());
 
-        appCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Terms & Condition")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_book)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .setOnClickAction(new MaterialPreferenceItemOnClickAction() {
-                    @Override
-                    public void onClick() {
-
-                    }
-                })
-                .build());
 
 
         MaterialPreferenceCard.Builder preferenceCardBuilder = new MaterialPreferenceCard.Builder();
@@ -103,10 +100,12 @@ public class Settings extends MaterialPreferenceActivity {
                 .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                        info.sayederfanarefin.chat.model.Settings settings = sharedPrefs.getSettingsFromSharedPref();
+                        settings.setMessageNotification(isChecked);
+                        sharedPrefs.saveSettingsInSharedPref(settings);
                     }
                 })
-                .setChecked(true)
+                .setChecked(sharedPrefs.getSettingsFromSharedPref().isMessageNotification())
                 .build());
 
         preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
@@ -120,9 +119,12 @@ public class Settings extends MaterialPreferenceActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+                        info.sayederfanarefin.chat.model.Settings settings = sharedPrefs.getSettingsFromSharedPref();
+                        settings.setNewFriendsNotification(isChecked);
+                        sharedPrefs.saveSettingsInSharedPref(settings);
                     }
                 })
-                .setChecked(true)
+                .setChecked(sharedPrefs.getSettingsFromSharedPref().isNewFriendsNotification())
                 .build());
 
         preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
@@ -135,10 +137,12 @@ public class Settings extends MaterialPreferenceActivity {
                 .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                        info.sayederfanarefin.chat.model.Settings settings = sharedPrefs.getSettingsFromSharedPref();
+                        settings.setSound(isChecked);
+                        sharedPrefs.saveSettingsInSharedPref(settings);
                     }
                 })
-                .setChecked(true)
+                .setChecked(sharedPrefs.getSettingsFromSharedPref().isSound())
                 .build());
 
         preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
@@ -151,10 +155,12 @@ public class Settings extends MaterialPreferenceActivity {
                 .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                        info.sayederfanarefin.chat.model.Settings settings = sharedPrefs.getSettingsFromSharedPref();
+                        settings.setVibrate(isChecked);
+                        sharedPrefs.saveSettingsInSharedPref(settings);
                     }
                 })
-                .setChecked(true)
+                .setChecked(sharedPrefs.getSettingsFromSharedPref().isVibrate())
                 .build());
 
 
@@ -282,4 +288,6 @@ public class Settings extends MaterialPreferenceActivity {
 
 
     }
+
+
 }

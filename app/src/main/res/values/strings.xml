@@ -134,6 +134,7 @@
 
     <!-- shared pref -->
     <string name="sharedPrefCurrentUser">currentUser</string>
+    <string name="sharedPrefSettings">settings</string>
     <string name="sharedPrefCurrentFirebaseUser">currentFirebaseUser</string>
 
     <string name="animation_circle_color_2">#ff5a01</string>

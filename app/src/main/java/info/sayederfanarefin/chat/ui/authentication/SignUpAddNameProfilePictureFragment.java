@@ -97,6 +97,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
     private boolean uploading = false;
     private boolean animateFlag = false;
 
+
+
     public SignUpAddNameProfilePictureFragment() {
         //Mandatory default constructor
     }
@@ -270,6 +272,8 @@ public class SignUpAddNameProfilePictureFragment extends CoreFirebaseFragment im
                 if (uploading) {
                     showSnachBar("Uploading image, please wait...");
                 } else {
+
+                    sharedPrefs.defaultSettings();
                     FirstActivity_.intent(getContext()).start();
                 }
 

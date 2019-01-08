@@ -20,6 +20,7 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.core.CoreFragment;
 import info.sayederfanarefin.chat.ui.FirstActivity_;
 
@@ -36,6 +37,7 @@ public class SignInEmailFragment extends CoreFragment {
     EditText editTextPassword;
 
     private FirebaseAuth auth;
+    private SharedPrefs sharedPrefs;
 
     public SignInEmailFragment() {
         //Mandatory default constructor
@@ -43,7 +45,7 @@ public class SignInEmailFragment extends CoreFragment {
 
     @AfterViews
     void afterViews() {
-
+        sharedPrefs = new SharedPrefs(getContext());
 
         editTextEmail.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
         editTextPassword.setBackgroundResource( R.drawable.edittexrroundedcorner_gray);
@@ -113,6 +115,7 @@ public class SignInEmailFragment extends CoreFragment {
                                 showSnachBar("Sign in failed");
 
                             } else {
+                                sharedPrefs.defaultSettings();
                                 FirstActivity_.intent(getActivity()).start();
 
                             }

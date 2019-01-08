@@ -105,7 +105,6 @@ public class FirstActivity extends CoreActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
 
-
     }
 
     @AfterViews
@@ -115,6 +114,7 @@ public class FirstActivity extends CoreActivity {
         redirectToAuthenticateActivityIfNeeded();
 
         sharedPrefs = new SharedPrefs(this);
+
         initializeViews();
 //        userRef.keepSynced(true);
     }

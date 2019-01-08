@@ -14,6 +14,7 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 
 import info.sayederfanarefin.chat.R;
+import info.sayederfanarefin.chat.commons.SharedPrefs;
 import info.sayederfanarefin.chat.config.Config;
 import info.sayederfanarefin.chat.dialog.LockProgressDialog;
 import info.sayederfanarefin.chat.helpers.Validate;
