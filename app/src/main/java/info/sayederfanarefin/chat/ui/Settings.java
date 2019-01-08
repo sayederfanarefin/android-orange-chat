@@ -3,10 +3,18 @@ package info.sayederfanarefin.chat.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.view.Gravity;
 import android.widget.CompoundButton;
+
+
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mikepenz.iconics.IconicsDrawable;
@@ -31,14 +39,16 @@ public class Settings extends MaterialPreferenceActivity {
     @NonNull
     protected MaterialPreferenceList getMaterialPreferenceList(@NonNull final Context c) {
 
+        //getSupportActionBar().setTitle("Settings");
+        changeActiobarDesign();
         final int colorIcon = R.color.colorPrimary;
         MaterialPreferenceCard.Builder appCardBuilder = new MaterialPreferenceCard.Builder();
 
         // Add items to card
 
         appCardBuilder.addItem(new MaterialPreferenceTitleItem.Builder()
-                .text("Material Preference Library")
-                .desc("© 2018 François Dexemple")
+                .text("Orange Chat")
+                .desc("© 2019 Boson 42")
                 .icon(R.mipmap.ic_launcher)
                 .build());
 
@@ -51,16 +61,21 @@ public class Settings extends MaterialPreferenceActivity {
                 false));
 
         appCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Changelog")
+                .text("Privacy & Policy")
                 .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_av_timer)
+                        .icon(CommunityMaterial.Icon.cmd_book)
                         .color(ContextCompat.getColor(c, colorIcon))
                         .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebViewDialogOnClickAction(c, "Releases", "https://github.com/daniel-stoneuk/material-Preference-library/releases", true, false))
+                .setOnClickAction(new MaterialPreferenceItemOnClickAction() {
+                    @Override
+                    public void onClick() {
+
+                    }
+                })
                 .build());
 
         appCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Licenses")
+                .text("Terms & Condition")
                 .icon(new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_book)
                         .color(ContextCompat.getColor(c, colorIcon))
@@ -74,16 +89,15 @@ public class Settings extends MaterialPreferenceActivity {
                 .build());
 
 
-
         MaterialPreferenceCard.Builder preferenceCardBuilder = new MaterialPreferenceCard.Builder();
 
         preferenceCardBuilder.title("Preferences");
 
         preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
-                .text("Switch")
-                .subText("Description of the switch")
+                .text("Message Notification")
+                .subText("Receive notification for new messages")
                 .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_access_point)
+                        .icon(CommunityMaterial.Icon.cmd_mailbox)
                         .color(ContextCompat.getColor(c, colorIcon))
                         .sizeDp(18))
                 .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
@@ -96,8 +110,8 @@ public class Settings extends MaterialPreferenceActivity {
                 .build());
 
         preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
-                .text("Switch2")
-                .subText("Description of the switch2")
+                .text("Friends Notification")
+                .subText("Receive notification for new friends")
                 .icon(new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_account)
                         .color(ContextCompat.getColor(c, colorIcon))
@@ -105,30 +119,48 @@ public class Settings extends MaterialPreferenceActivity {
                 .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        Toast.makeText(c,"Now : "+isChecked,Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .build());
 
-        preferenceCardBuilder.addItem(new MaterialPreferenceCheckBoxItem.Builder()
-                .text("CheckBox")
-                .subText("Description of the checkbox")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_github_circle)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        Toast.makeText(c,"Now : "+isChecked,Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setChecked(true)
                 .build());
 
+        preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
+                .text("Sound")
+                .subText("Playsound when notification is received")
+                .icon(new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_surround_sound)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18))
+                .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    }
+                })
+                .setChecked(true)
+                .build());
+
+        preferenceCardBuilder.addItem(new MaterialPreferenceSwitchItem.Builder()
+                .text("Vibrate")
+                .subText("Vibrate phone when notification is received")
+                .icon(new IconicsDrawable(c)
+                        .icon(CommunityMaterial.Icon.cmd_vibrate)
+                        .color(ContextCompat.getColor(c, colorIcon))
+                        .sizeDp(18))
+                .setOnCheckedChanged(new MaterialPreferenceOnCheckedChangedListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    }
+                })
+                .setChecked(true)
+                .build());
+
+
         MaterialPreferenceCard.Builder convenienceCardBuilder = new MaterialPreferenceCard.Builder();
 
-        convenienceCardBuilder.title("Convenience Builder");
+        convenienceCardBuilder.title("Orange Chat");
 
         convenienceCardBuilder.addItem(ConvenienceBuilder.createVersionActionItem(c,
                 new IconicsDrawable(c)
@@ -145,7 +177,7 @@ public class Settings extends MaterialPreferenceActivity {
                         .sizeDp(18),
                 "Visit Website",
                 true,
-                Uri.parse("http://daniel-stone.uk")));
+                Uri.parse("http://boson42.tech")));
 
         convenienceCardBuilder.addItem(ConvenienceBuilder.createRateActionItem(c,
                 new IconicsDrawable(c)
@@ -153,7 +185,7 @@ public class Settings extends MaterialPreferenceActivity {
                         .color(ContextCompat.getColor(c, colorIcon))
                         .sizeDp(18),
                 "Rate this app",
-                null
+                "Google Play Store"
         ));
 
         convenienceCardBuilder.addItem(ConvenienceBuilder.createEmailItem(c,
@@ -163,88 +195,47 @@ public class Settings extends MaterialPreferenceActivity {
                         .sizeDp(18),
                 "Send an email",
                 true,
-                "apps@daniel-stone.uk",
-                "Question concerning MaterialPreferenceLibrary"));
+                "boson.42.apps@gmail.com",
+                "Question regarding Orange Chat"));
 
-        convenienceCardBuilder.addItem(ConvenienceBuilder.createPhoneItem(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_cellphone)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "Call me",
-                true,
-                "+44 12 3456 7890"));
+//        convenienceCardBuilder.addItem(ConvenienceBuilder.createPhoneItem(c,
+//                new IconicsDrawable(c)
+//                        .icon(CommunityMaterial.Icon.cmd_cellphone)
+//                        .color(ContextCompat.getColor(c, colorIcon))
+//                        .sizeDp(18),
+//                "Call me",
+//                true,
+//                "+44 12 3456 7890"));
 
-        convenienceCardBuilder.addItem(ConvenienceBuilder.createMapItem(c,
-                new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_google_maps)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18),
-                "Visit London",
-                null,
-                "London Eye"));
+//        convenienceCardBuilder.addItem(ConvenienceBuilder.createMapItem(c,
+//                new IconicsDrawable(c)
+//                        .icon(CommunityMaterial.Icon.cmd_google_maps)
+//                        .color(ContextCompat.getColor(c, colorIcon))
+//                        .sizeDp(18),
+//                "Visit London",
+//                null,
+//                "London Eye"));
 
-        MaterialPreferenceCard.Builder otherCardBuilder = new MaterialPreferenceCard.Builder();
-        otherCardBuilder.title("Other");
 
-        otherCardBuilder.cardColor(Color.parseColor("#7986CB"));
-
-        otherCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_access_point)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .text("HTML Formatted Sub Text")
-                .subTextHtml("This is <b>HTML</b> formatted <i>text</i> <br /> This is very cool because it allows lines to get very long which can lead to all kinds of possibilities. <br /> And line breaks. <br /> Oh and by the way, this card has a custom defined background.")
-                .setIconGravity(MaterialPreferenceActionItem.GRAVITY_TOP)
-                .build()
-        );
         MaterialPreferenceCard.Builder authorCardBuilder = new MaterialPreferenceCard.Builder();
-        authorCardBuilder.title("Author");
+        authorCardBuilder.title("Developer");
 //        authorCardBuilder.titleColor(ContextCompat.getColor(c, R.color.colorAccent));
 
         authorCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("François Dexemple")
-                .subText("France")
+                .text("Sayed Erfan Arefin")
+                .subText("Bangladesh")
                 .icon(new IconicsDrawable(c)
                         .icon(CommunityMaterial.Icon.cmd_account)
                         .color(ContextCompat.getColor(c, colorIcon))
                         .sizeDp(18))
                 .build());
 
-        authorCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Fork on GitHub")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_github_circle)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebsiteOnClickAction(c, Uri.parse("https://github.com/filol")))
-                .build());
-
-        MaterialPreferenceCard.Builder originalAuthorCardBuilder = new MaterialPreferenceCard.Builder();
-        originalAuthorCardBuilder.title("Original author");
-//        authorCardBuilder.titleColor(ContextCompat.getColor(c, R.color.colorAccent));
-
-        originalAuthorCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Daniel Stone")
-                .subText("United Kingdom")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_account)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .build());
-
-        originalAuthorCardBuilder.addItem(new MaterialPreferenceActionItem.Builder()
-                .text("Original Library on GitHub")
-                .icon(new IconicsDrawable(c)
-                        .icon(CommunityMaterial.Icon.cmd_github_circle)
-                        .color(ContextCompat.getColor(c, colorIcon))
-                        .sizeDp(18))
-                .setOnClickAction(ConvenienceBuilder.createWebsiteOnClickAction(c, Uri.parse("https://github.com/daniel-stoneuk")))
-                .build());
 
 
-        return new MaterialPreferenceList(appCardBuilder.build(),preferenceCardBuilder.build(), convenienceCardBuilder.build(), otherCardBuilder.build(), authorCardBuilder.build(), originalAuthorCardBuilder.build());
+
+
+
+        return new MaterialPreferenceList(appCardBuilder.build(),preferenceCardBuilder.build(), convenienceCardBuilder.build());
 
     }
 
@@ -253,4 +244,42 @@ public class Settings extends MaterialPreferenceActivity {
         return getString(R.string.mp_title_preference);
     }
 
+
+    private void changeActiobarDesign(){
+        // Get the ActionBar
+        ActionBar ab = getSupportActionBar();
+
+        // Create a TextView programmatically.
+        TextView tv = new TextView(getApplicationContext());
+
+        // Create a LayoutParams for TextView
+        ActionBar.LayoutParams lp = new ActionBar.LayoutParams(
+                ActionBar.LayoutParams.MATCH_PARENT, // Width of TextView
+                ActionBar.LayoutParams.WRAP_CONTENT); // Height of TextView
+
+//        // Apply the layout parameters to TextView widget
+        tv.setLayoutParams(lp);
+
+        // Set text to display in TextView
+        tv.setText("Settings"); // ActionBar title text
+
+        // Set the text color of TextView to red
+        // This line change the ActionBar title text color
+        tv.setTextColor(getColor(R.color.colorWhite));
+        tv.setGravity(Gravity.CENTER);
+
+        // Set the ActionBar display option
+        ab.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ab.setDisplayHomeAsUpEnabled(true);
+
+        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        upArrow.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+        ab.setHomeAsUpIndicator(upArrow);
+
+
+        // Finally, set the newly created TextView as ActionBar custom view
+        ab.setCustomView(tv);
+
+
+    }
 }
